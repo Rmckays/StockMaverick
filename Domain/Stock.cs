@@ -4,6 +4,8 @@ namespace Domain
 {
     public class Stock
     {
+        public Guid Id { get; set; }
+        
         public string Symbol { get; set; }
         
         public string CompanyName { get; set; }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace Persistence
@@ -7,7 +8,9 @@ namespace Persistence
     {
         public StockAppContext(DbContextOptions<StockAppContext> options) : base(options)
         {
-            
+
         }
+        
+        public DbSet<Stock> Stocks { get; set; }
     }
 }
