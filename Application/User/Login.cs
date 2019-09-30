@@ -1,6 +1,7 @@
 ﻿using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using Application.Errors;
 using Domain;
 using FluentValidation;
 using MediatR;
@@ -49,7 +50,15 @@ namespace Application.User
                 {
                     throw new RestException(HttpStatusCode.Unauthorized);
                 }
+
+                var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
+
+                if (result.Succeeded)
+                {
+                    return user;
+                }
                 
+                throw new RestException(HttpStatusCode.Unauthorized);
             }
         }
     }

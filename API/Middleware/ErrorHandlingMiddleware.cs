@@ -1,7 +1,7 @@
 ﻿using System;
-using System.Linq.Expressions;
 using System.Net;
 using System.Threading.Tasks;
+using Application.Errors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -32,7 +32,7 @@ namespace API.Middleware
             }
         }
 
-        private async Task HandleExceptionAsync(HttpContext context, Exception exception, ILogger<ErrorHandlingMiddleware> logger)
+        private async Task HandleExceptionAsync(HttpContext context, Exception ex, ILogger<ErrorHandlingMiddleware> logger)
         {
             object errors = null;
 
