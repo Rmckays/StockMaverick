@@ -27,7 +27,7 @@ namespace Persistence.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
-                    UserName = table.Column<string>(maxLength: 256, nullable: true),
+                    UserName = table.Column<string>(maxLength: 256, nullable: false),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(maxLength: 256, nullable: true),
@@ -42,7 +42,7 @@ namespace Persistence.Migrations
                     LockoutEnabled = table.Column<bool>(nullable: false),
                     AccessFailedCount = table.Column<int>(nullable: false),
                     PortfolioAmount = table.Column<double>(nullable: false),
-                    DisplayName = table.Column<string>(nullable: true)
+                    DisplayName = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {

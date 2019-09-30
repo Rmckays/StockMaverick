@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Persistence;
 
 namespace Persistence.Migrations
 {
     [DbContext(typeof(StockAppContext))]
-    partial class StockAppContextModelSnapshot : ModelSnapshot
+    [Migration("20190930182855_AddAppUserToStock")]
+    partial class AddAppUserToStock
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -83,11 +85,9 @@ namespace Persistence.Migrations
 
                     b.Property<int>("Amount");
 
-                    b.Property<string>("AppUserId")
-                        .IsRequired();
+                    b.Property<string>("AppUserId");
 
-                    b.Property<string>("CompanyName")
-                        .IsRequired();
+                    b.Property<string>("CompanyName");
 
                     b.Property<string>("Exchange");
 
@@ -95,8 +95,7 @@ namespace Persistence.Migrations
 
                     b.Property<DateTime>("PurchaseDate");
 
-                    b.Property<string>("Symbol")
-                        .IsRequired();
+                    b.Property<string>("Symbol");
 
                     b.Property<double>("YearHigh");
 
@@ -221,8 +220,7 @@ namespace Persistence.Migrations
                 {
                     b.HasOne("Domain.AppUser", "AppUser")
                         .WithMany()
-                        .HasForeignKey("AppUserId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("AppUserId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
