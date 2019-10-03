@@ -5,9 +5,9 @@ namespace Domain
 {
     public class AppUser: IdentityUser
     {
-        public double PortfolioAmount { get; set; }
+        public float PortfolioAmount { get; set; }
         
-        public double CashAmount { get; set; }
+        public float CashAmount { get; set; }
         
         public string DisplayName { get; set; }
     }

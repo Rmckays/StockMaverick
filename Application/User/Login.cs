@@ -62,6 +62,7 @@ namespace Application.User
                         DisplayName = user.DisplayName,
                         Token = "This will be a token",
                         Username = user.UserName,
+                        CashAmount = user.CashAmount,
                         Image = null
                     };
                 }

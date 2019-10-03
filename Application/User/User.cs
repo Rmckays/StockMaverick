@@ -8,6 +8,7 @@
         
         public string Username { get; set; }
         
+        public float CashAmount { get; set; }
         public string Image { get; set; }
     }
 }
