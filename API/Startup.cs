@@ -1,7 +1,9 @@
 ﻿
+using System.Collections.Generic;
 using Application.User;
 using Domain;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
@@ -33,6 +35,7 @@ namespace API
             {
                 Configuration.RootPath = "client/build";
             });
+            services.AddMediatR(typeof(Login.Handler).Assembly);
             services.AddMvc()
                 .AddFluentValidation(cfg => cfg.RegisterValidatorsFromAssemblyContaining<Login>())
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

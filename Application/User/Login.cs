@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Errors;
@@ -48,6 +49,7 @@ namespace Application.User
 
                 if (user == null)
                 {
+                    Console.Write("User is Null");
                     throw new RestException(HttpStatusCode.Unauthorized);
                 }
 
