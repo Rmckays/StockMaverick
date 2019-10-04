@@ -12,7 +12,7 @@ namespace Persistence
 
         }
         
-        public DbSet<Stock> Stocks { get; set; }
+        public DbSet<PortfolioStock> Stocks { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

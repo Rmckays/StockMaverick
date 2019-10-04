@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Domain
 {
-    public class Stock
+    public class PortfolioStock
     {
         public Guid Id { get; set; }
         

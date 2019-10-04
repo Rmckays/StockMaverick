@@ -5,6 +5,7 @@ using MediatR;
 using Newtonsoft.Json.Linq;
 using RestSharp;
 
+
 namespace Application.Stock
 {
     public class GetStock
@@ -21,15 +22,17 @@ namespace Application.Stock
             public async Task<Stock> Handle(Query request, CancellationToken cancellationToken)
             {
 
-                var client = new RestClient("https://cloud.iexapis.com/stable/stock/{symbol}");
+                var client = new RestClient("https://sandbox.iexapis.com/stable/stock/{symbol}");
                 var restRequest = new RestRequest("/quote/latestprice", Method.GET);
                 restRequest.AddParameter("symbol", request.Symbol, ParameterType.UrlSegment);
                 restRequest.AddHeader("Content-Type", "application/json");
-                restRequest.AddQueryParameter("token", "Enter API Key Here");
+                restRequest.AddQueryParameter("token", "Enter Your API Key");
                 restRequest.RequestFormat = DataFormat.Json;
                 var restResponse = await client.ExecuteTaskAsync(restRequest, CancellationToken.None);
 
                 Console.WriteLine(restResponse.Content);
+                
+                
                 dynamic api = JObject.Parse(restResponse.Content);
 
                 
@@ -41,11 +44,11 @@ namespace Application.Stock
                 
                     PrimaryExchange = api.primaryExchange,
                     
-                    OpenPrice = api.open,
+                    OpenPrice = api.latestPrice,
                     
-                    ClosePrice = api.close,
+                    ClosePrice = api.previousClose,
                     
-                    Volume = api.volume,
+                    Volume = api.previousVolume,
                     
                     YearlyHigh = api.week52High,
                     

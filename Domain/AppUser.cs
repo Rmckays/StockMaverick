@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+
 using Microsoft.AspNetCore.Identity;
 
 namespace Domain
@@ -10,5 +11,6 @@ namespace Domain
         public float CashAmount { get; set; }
         
         public string DisplayName { get; set; }
+        
     }
 }
