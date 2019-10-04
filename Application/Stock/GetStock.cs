@@ -21,8 +21,8 @@ namespace Application.Stock
             
             public async Task<Stock> Handle(Query request, CancellationToken cancellationToken)
             {
-                var stock = await 
-            
+                var stock = await IEXStockAPI.Execute(request);
+
             }
             
         }

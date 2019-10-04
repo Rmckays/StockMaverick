@@ -6,22 +6,26 @@ namespace Application.Stock
 {
     public class IEXStockAPI
     {
-        private const string BaseUrl = "https://cloud.iexapis.com/stable/stock/aapl/quote/latestprice";
+//        private const string BaseUrl = "https://cloud.iexapis.com/stable/stock/[symbol]/quote/latestprice";
+//
+//        private readonly IRestClient _client;
+//        
+//        private const string ApiKey = "";
+//
+//        public IEXStockAPI(string ApiKey)
+//        {
+//            _client = new RestClient(BaseUrl);
+//
+//        }
 
-        private readonly IRestClient _client;
-        
-        private const string ApiKey = "";
-
-        public IEXStockAPI(string ApiKey)
+        public T Execute<T>(RestRequest request) where T : class, new()
         {
-            _client = new RestClient(BaseUrl);
-            _client.Authenticator = new OAuth2AuthorizationRequestHeaderAuthenticator(ApiKey);
-        }
-
-        public T Execute<T>(RestRequest request) where T : new()
-        {
-            request.AddHeader("API_KEY", ApiKey);
-            var response = _client.Execute<T>(request);
+            var client = new RestClient("https://cloud.iexapis.com/stable/stock/aapl/quote/latestprice");
+            request.Method = Method.GET;
+            request.AddHeader("Content-Type", "application/json");
+            request.AddHeader("token", "********");
+            
+            var response = client.Execute<T>(request);
 
             if (response.ErrorException != null)
             {
