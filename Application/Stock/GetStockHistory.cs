@@ -24,7 +24,7 @@ namespace Application.Stock
                 var restRequest = new RestRequest("/chart/1m", Method.GET);
                 restRequest.AddParameter("symbol", request.Symbol, ParameterType.UrlSegment);
                 restRequest.AddHeader("Content-Type", "application/json");
-                restRequest.AddQueryParameter("token", "Enter Your API Key");
+                restRequest.AddQueryParameter("token", "Enter Your API Key Here");
                 restRequest.RequestFormat = DataFormat.Json;
 
                 var restResponse = await client.ExecuteTaskAsync(restRequest, CancellationToken.None);

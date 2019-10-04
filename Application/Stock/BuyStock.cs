@@ -24,7 +24,6 @@ namespace Application.Stock
             
             public DateTime PurchaseDate { get; set; }
             
-//            public Guid UserId { get; set; }
         }
 
         public class Handler : IRequestHandler<Command>
@@ -43,12 +42,12 @@ namespace Application.Stock
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
                 var user = await _userManager.FindByNameAsync(_userAccessor.GetCurrentUserName());
-                
+
                 var client = new RestClient("https://sandbox.iexapis.com/stable/stock/{symbol}");
                 var restRequest = new RestRequest("/quote/latestprice", Method.GET);
                 restRequest.AddParameter("symbol", request.Symbol, ParameterType.UrlSegment);
                 restRequest.AddHeader("Content-Type", "application/json");
-                restRequest.AddQueryParameter("token", "Enter Your API Key");
+                restRequest.AddQueryParameter("token", "Enter Your API Key Here");
                 restRequest.RequestFormat = DataFormat.Json;
                 var restResponse = await client.ExecuteTaskAsync(restRequest, CancellationToken.None);
 
@@ -62,6 +61,7 @@ namespace Application.Stock
                     CompanyName = api.companyName,
                     Exchange = api.primaryExchange,
                     Price = api.latestPrice,
+                    YearHigh = api.week52High,
                     Id = request.Id,
                     AppUser = user
                 };

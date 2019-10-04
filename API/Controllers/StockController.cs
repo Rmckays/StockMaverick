@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Application.Stock;
 using Domain;
@@ -19,7 +20,7 @@ namespace API.Controllers
         {
             return await Mediator.Send(new GetStock.Query {Symbol = symbol});
         }
-        
+
         [HttpGet("history/{symbol}")]
 
         public async Task<ActionResult<List<HistoricStock>>> GetStockHistory(string symbol)
@@ -29,9 +30,11 @@ namespace API.Controllers
 
         [HttpPost("buy/{symbol}")]
 
-        public async Task<ActionResult<Unit>> BuyStock(string symbol)
+        public async Task<ActionResult<Unit>> BuyStock(string symbol, BuyStock.Command command)
         {
-            return await Mediator.Send(new BuyStock.Command {Symbol = symbol});
+            command.Symbol = symbol;
+            
+            return await Mediator.Send(command);
         }
 
     }
