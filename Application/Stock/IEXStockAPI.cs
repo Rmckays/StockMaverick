@@ -1,40 +1,34 @@
 ﻿using System;
-using RestSharp;
-using RestSharp.Authenticators;
-
-namespace Application.Stock
-{
-    public class IEXStockAPI
-    {
-//        private const string BaseUrl = "https://cloud.iexapis.com/stable/stock/[symbol]/quote/latestprice";
-//
-//        private readonly IRestClient _client;
-//        
-//        private const string ApiKey = "";
-//
-//        public IEXStockAPI(string ApiKey)
-//        {
-//            _client = new RestClient(BaseUrl);
-//
-//        }
-
-        public T Execute<T>(RestRequest request) where T : class, new()
-        {
-            var client = new RestClient("https://cloud.iexapis.com/stable/stock/aapl/quote/latestprice");
-            request.Method = Method.GET;
-            request.AddHeader("Content-Type", "application/json");
-            request.AddHeader("token", "********");
-            
-            var response = client.Execute<T>(request);
-
-            if (response.ErrorException != null)
-            {
-                const string message = "Error retrieving your stock.";
-                var IEXException = new Exception(message, response.ErrorException);
-                throw IEXException;
-            }
-
-            return response.Data;
-        }
-    }
-}
+using System.Threading;
+using System.Threading.Tasks;
+//using Newtonsoft.Json.Linq;
+   //using RestSharp;
+   //
+   //namespace Application.Stock
+   //{
+   //    public class IEXStockAPI
+   //    {
+   //        public async Task<>Execute(RestRequest request)
+   //        {
+   //            var client = new RestClient("https://cloud.iexapis.com/stable/stock/");
+   //            var restRequest = new RestRequest("{symbol}/quote/latestprice", Method.GET);
+   //            restRequest.AddParameter("symbol", request.Symbol);
+   //            restRequest.AddHeader("Content-Type", "application/json");
+   //            restRequest.AddQueryParameter("token", "pk_04ed137e3f134c6ebcc3ce81c314b60d");
+   //            restRequest.RequestFormat = DataFormat.Json;
+   //                
+   //            var restResponse = await client.ExecuteTaskAsync(restRequest, CancellationToken.None);
+   //
+   //            dynamic apiData = JObject.Parse(restResponse.Content);
+   //
+   //            if (restResponse.ErrorException != null)
+   //            {
+   //                const string message = "Error retrieving your stock.";
+   //                var IEXException = new Exception(message, restResponse.ErrorException);
+   //                throw IEXException;
+   //            }
+   //
+   //            return apiData;
+   //        }
+   //    }
+   //}
