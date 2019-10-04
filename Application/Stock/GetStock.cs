@@ -20,17 +20,16 @@ namespace Application.Stock
 
             public async Task<Stock> Handle(Query request, CancellationToken cancellationToken)
             {
-                var symbol = request.Symbol;
-                
+
                 var client = new RestClient("https://cloud.iexapis.com/stable/stock/{symbol}");
                 var restRequest = new RestRequest("/quote/latestprice", Method.GET);
-                restRequest.AddParameter("symbol", "AAPL", ParameterType.UrlSegment);
+                restRequest.AddParameter("symbol", request.Symbol, ParameterType.UrlSegment);
                 restRequest.AddHeader("Content-Type", "application/json");
-                restRequest.AddQueryParameter("token", "Enter API Key");
+                restRequest.AddQueryParameter("token", "Enter API Key Here");
                 restRequest.RequestFormat = DataFormat.Json;
-                
                 var restResponse = await client.ExecuteTaskAsync(restRequest, CancellationToken.None);
 
+                Console.WriteLine(restResponse.Content);
                 dynamic api = JObject.Parse(restResponse.Content);
 
                 

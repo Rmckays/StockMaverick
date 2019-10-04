@@ -15,7 +15,7 @@ namespace API.Controllers
 
         public async Task<ActionResult<Stock>> GetStock(string symbol)
         {
-            return await Mediator.Send(new GetStock.Query());
+            return await Mediator.Send(new GetStock.Query {Symbol = symbol});
         }
 
     }
