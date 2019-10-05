@@ -30,7 +30,7 @@ namespace API.Controllers
 
         [HttpPost("buy/{symbol}")]
 
-        public async Task<ActionResult<Unit>> BuyStock(string symbol, BuyStock.Command command)
+        public async Task<ActionResult<Unit>> BuyStock(string symbol,  BuyStock.Command command)
         {
             command.Symbol = symbol;
             
