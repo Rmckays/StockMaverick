@@ -18,6 +18,8 @@ namespace Domain
         public float PurchasePrice { get; set; }
         
         public float SellPrice { get; set; }
+        
+        public float TransactionPrice { get; set; }
 
         public int TransactionAmount { get; set; }
         

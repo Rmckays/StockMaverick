@@ -46,7 +46,7 @@ namespace Application.Stock
                 var restRequest = new RestRequest("/quote/latestprice", Method.GET);
                 restRequest.AddParameter("symbol", request.Symbol, ParameterType.UrlSegment);
                 restRequest.AddHeader("Content-Type", "application/json");
-                restRequest.AddQueryParameter("token", "Enter Your API Key Here");
+                restRequest.AddQueryParameter("token", "Tpk_26f5263b43bf452395c7a4983d5b3dd0");
                 restRequest.RequestFormat = DataFormat.Json;
                 var restResponse = await client.ExecuteTaskAsync(restRequest, CancellationToken.None);
 
@@ -64,11 +64,26 @@ namespace Application.Stock
                     Id = request.Id,
                     AppUser = user
                 };
+
+                var transactionPrice = (float) stock.Price * request.Amount ;
+                
+                var transaction = new Transaction
+                {
+                    TransactionDate = request.PurchaseDate,
+                    TransactionAmount = request.Amount,
+                    PurchasePrice = api.latestPrice,
+                    AppUser = user,
+                    Symbol = request.Symbol,
+                    TransactionPrice = transactionPrice,
+                    Id = new Guid(),
+                    CompanyName = api.companyName
+                };
                 
                 var cost = (float) stock.Price * request.Amount;
                 user.CashAmount = user.CashAmount - cost;
                 
                 _context.Stocks.Add(stock);
+                _context.Transactions.Add(transaction);
                 var success = await _context.SaveChangesAsync() > 0;
 
                 if (success) return Unit.Value;

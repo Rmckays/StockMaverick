@@ -5,7 +5,9 @@ using Application.Interfaces;
 using Domain;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Newtonsoft.Json.Linq;
 using Persistence;
+using RestSharp;
 
 namespace Application.Stock
 {
@@ -16,6 +18,8 @@ namespace Application.Stock
             public Guid Id { get; set; }
             
             public int Amount { get; set; }
+            
+            public DateTime PurchaseDate { get; set; }
         }
 
         public class Handler : IRequestHandler<Command>
@@ -33,25 +37,57 @@ namespace Application.Stock
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                var stockTransaction = _context.Stocks.FindAsync(request.Id);
+                var user = await _userManager.FindByNameAsync(_userAccessor.GetCurrentUserName());
                 
-                if (stockTransaction == null)
+                if (user == null)
+                {
+                    throw new Exception("User not found.");
+                }
+                
+                var stock = await _context.Stocks.FindAsync(request.Id);
+                
+                if (stock == null)
                 {
                     throw new Exception("Stocks not found.");
                 }
+                
+                var client = new RestClient("https://sandbox.iexapis.com/stable/stock/{symbol}");
+                var restRequest = new RestRequest("/quote/latestprice", Method.GET);
+                restRequest.AddParameter("symbol", stock.Symbol, ParameterType.UrlSegment);
+                restRequest.AddHeader("Content-Type", "application/json");
+                restRequest.AddQueryParameter("token", "Enter Your API Key Here");
+                restRequest.RequestFormat = DataFormat.Json;
+                
+                var restResponse = await client.ExecuteTaskAsync(restRequest, CancellationToken.None);
 
-                Console.WriteLine(stockTransaction);
+                dynamic api = JObject.Parse(restResponse.Content);
+                
+                var currentPrice = api.latestPrice;
+                
+                var transactionPrice = (float) currentPrice * request.Amount ;
+                
+                var transaction = new Transaction
+                {
+                    TransactionDate = request.PurchaseDate,
+                    TransactionAmount = request.Amount,
+                    SellPrice = api.latestPrice,
+                    AppUser = user,
+                    Symbol = stock.Symbol,
+                    TransactionPrice = transactionPrice,
+                    Id = new Guid(),
+                    CompanyName = api.companyName
+                };
 
-//                _context.Stocks.Update();
-//                
-//                var user= await _userManager.FindByNameAsync(_userAccessor.GetCurrentUserName());
-//
-//                var success = await _context.SaveChangesAsync() > 0;
-//
-//                if (success) return Unit.Value;
-//
-//                throw new Exception("Problem saving changes");
-                return Unit.Value;
+                stock.Amount = stock.Amount - request.Amount;
+                user.CashAmount = user.CashAmount + transactionPrice;
+                
+                _context.Transactions.Add(transaction);
+                
+                var success = await _context.SaveChangesAsync() > 0;
+
+                if (success) return Unit.Value;
+
+                throw new Exception("Problem saving changes");
             }
 
         }
