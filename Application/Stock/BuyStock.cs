@@ -65,7 +65,10 @@ namespace Application.Stock
                     Id = request.Id,
                     AppUser = user
                 };
-
+                
+                var cost = (float) stock.Price * request.Amount;
+                user.CashAmount = user.CashAmount - cost;
+                
                 _context.Stocks.Add(stock);
                 var success = await _context.SaveChangesAsync() > 0;
 
