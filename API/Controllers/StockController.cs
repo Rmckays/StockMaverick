@@ -37,5 +37,11 @@ namespace API.Controllers
             return await Mediator.Send(command);
         }
 
+        [HttpPut("sell/{id}")]
+        public async Task<ActionResult<Unit>> SellStock(Guid id, SellStock.Command command)
+        {
+            command.Id = id;
+            return await Mediator.Send(command);
+        }
     }
 }

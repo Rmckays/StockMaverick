@@ -14,6 +14,8 @@ namespace Application.Stock
         public class Command : IRequest
         {
             public Guid Id { get; set; }
+            
+            public int Amount { get; set; }
         }
 
         public class Handler : IRequestHandler<Command>
@@ -31,13 +33,25 @@ namespace Application.Stock
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                var user= await _userManager.FindByNameAsync(_userAccessor.GetCurrentUserName());
+                var stockTransaction = _context.Stocks.FindAsync(request.Id);
+                
+                if (stockTransaction == null)
+                {
+                    throw new Exception("Stocks not found.");
+                }
 
-                var success = await _context.SaveChangesAsync() > 0;
+                Console.WriteLine(stockTransaction);
 
-                if (success) return Unit.Value;
-
-                throw new Exception("Problem saving changes");
+//                _context.Stocks.Update();
+//                
+//                var user= await _userManager.FindByNameAsync(_userAccessor.GetCurrentUserName());
+//
+//                var success = await _context.SaveChangesAsync() > 0;
+//
+//                if (success) return Unit.Value;
+//
+//                throw new Exception("Problem saving changes");
+                return Unit.Value;
             }
 
         }
