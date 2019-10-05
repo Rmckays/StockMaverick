@@ -50,6 +50,11 @@ namespace Application.Stock
                 {
                     throw new Exception("Stocks not found.");
                 }
+
+                if (stock.Amount < request.Amount)
+                {
+                    throw new Exception("Insufficient Stock Amounts.");
+                }
                 
                 var client = new RestClient("https://sandbox.iexapis.com/stable/stock/{symbol}");
                 var restRequest = new RestRequest("/quote/latestprice", Method.GET);
@@ -78,6 +83,11 @@ namespace Application.Stock
                     CompanyName = api.companyName
                 };
 
+                if (stock.Amount == request.Amount)
+                {
+                    _context.Stocks.Remove(stock);
+                }
+                
                 stock.Amount = stock.Amount - request.Amount;
                 user.CashAmount = user.CashAmount + transactionPrice;
                 

@@ -41,12 +41,14 @@ namespace Application.Stock
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
                 var user = await _userManager.FindByNameAsync(_userAccessor.GetCurrentUserName());
+                
+                
 
                 var client = new RestClient("https://sandbox.iexapis.com/stable/stock/{symbol}");
                 var restRequest = new RestRequest("/quote/latestprice", Method.GET);
                 restRequest.AddParameter("symbol", request.Symbol, ParameterType.UrlSegment);
                 restRequest.AddHeader("Content-Type", "application/json");
-                restRequest.AddQueryParameter("token", "Tpk_26f5263b43bf452395c7a4983d5b3dd0");
+                restRequest.AddQueryParameter("token", "Enter Your API Key Here");
                 restRequest.RequestFormat = DataFormat.Json;
                 var restResponse = await client.ExecuteTaskAsync(restRequest, CancellationToken.None);
 
@@ -64,6 +66,9 @@ namespace Application.Stock
                     Id = request.Id,
                     AppUser = user
                 };
+
+                Console.WriteLine(api.primaryExchange);
+                Console.WriteLine(restResponse.Content);
 
                 var transactionPrice = (float) stock.Price * request.Amount ;
                 
