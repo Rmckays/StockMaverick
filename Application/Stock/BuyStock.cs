@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Interfaces;
 using Domain;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 using Persistence;
 using RestSharp;
@@ -41,8 +43,10 @@ namespace Application.Stock
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
                 var user = await _userManager.FindByNameAsync(_userAccessor.GetCurrentUserName());
-                
-                
+
+                var portfolioStock = await _context.Stocks
+                    .Where(s => s.Symbol == request.Symbol).Where(u => u.AppUser == user)
+                    .SingleOrDefaultAsync();
 
                 var client = new RestClient("https://sandbox.iexapis.com/stable/stock/{symbol}");
                 var restRequest = new RestRequest("/quote/latestprice", Method.GET);
@@ -54,24 +58,50 @@ namespace Application.Stock
 
                 dynamic api = JObject.Parse(restResponse.Content);
 
-                var stock = new PortfolioStock
+                var transactionPrice = (float) api.latestPrice * request.Amount ;
+
+                Console.WriteLine(transactionPrice);
+
+                if (portfolioStock == null)
                 {
-                    PurchaseDate = request.PurchaseDate,
-                    Amount = request.Amount,
-                    Symbol = api.symbol,
-                    CompanyName = api.companyName,
-                    Exchange = api.primaryExchange,
-                    Price = api.latestPrice,
-                    YearHigh = api.week52High,
-                    Id = request.Id,
-                    AppUser = user
-                };
+                    var stock = new PortfolioStock
+                    {
+                        PurchaseDate = request.PurchaseDate,
+                        Amount = request.Amount,
+                        Symbol = api.symbol,
+                        CompanyName = api.companyName,
+                        Exchange = api.primaryExchange,
+                        Price = transactionPrice,
+                        YearHigh = api.week52High,
+                        Id = request.Id,
+                        AppUser = user
+                    };
 
-                Console.WriteLine(api.primaryExchange);
-                Console.WriteLine(restResponse.Content);
+                    Console.WriteLine("New Stock was added");
+                    _context.Stocks.Add(stock);
+                }
+                else
+                {
+                    portfolioStock.Amount += request.Amount;
+                    portfolioStock.PurchaseDate = request.PurchaseDate;
+                    portfolioStock.Price = transactionPrice;
+                    Console.WriteLine("Your Stock was Updated");
+                    _context.Stocks.Update(portfolioStock);
+                }
+//                var stock = new PortfolioStock
+//                {
+//                    PurchaseDate = request.PurchaseDate,
+//                    Amount = request.Amount,
+//                    Symbol = api.symbol,
+//                    CompanyName = api.companyName,
+//                    Exchange = api.primaryExchange,
+//                    Price = transactionPrice,
+//                    YearHigh = api.week52High,
+//                    Id = request.Id,
+//                    AppUser = user
+//                };
 
-                var transactionPrice = (float) stock.Price * request.Amount ;
-                
+
                 var transaction = new Transaction
                 {
                     TransactionDate = request.PurchaseDate,
@@ -84,10 +114,11 @@ namespace Application.Stock
                     CompanyName = api.companyName
                 };
                 
-                var cost = (float) stock.Price * request.Amount;
+                var cost = transactionPrice * request.Amount;
+//                _context.Stocks.Add(stock);
                 user.CashAmount = user.CashAmount - cost;
                 
-                _context.Stocks.Add(stock);
+                
                 _context.Transactions.Add(transaction);
                 var success = await _context.SaveChangesAsync() > 0;
 

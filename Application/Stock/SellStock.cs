@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Application.Interfaces;
 using Domain;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 using Persistence;
 using RestSharp;
@@ -18,6 +20,8 @@ namespace Application.Stock
             public Guid Id { get; set; }
             
             public int Amount { get; set; }
+            
+            public string Symbol { get; set; }
             
             public DateTime PurchaseDate { get; set; }
         }
@@ -44,7 +48,9 @@ namespace Application.Stock
                     throw new Exception("User not found.");
                 }
                 
-                var stock = await _context.Stocks.FindAsync(request.Id);
+                var stock = await _context.Stocks
+                    .Where(s => s.Symbol == request.Symbol).Where(u => u.AppUser == user)
+                    .SingleOrDefaultAsync();
                 
                 if (stock == null)
                 {
