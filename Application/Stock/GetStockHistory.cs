@@ -33,14 +33,6 @@ namespace Application.Stock
 
                 Console.WriteLine(apiObjects);
 
-//                var stocks = apiObjects.Select(x => new HistoricStock
-//                    {
-//                        Date = x.date,
-//                        ClosePrice = x.close,
-//                        Volume = x.volume,
-//                        Change = x.change
-//                    });
-                
                 var stocks =  new List<HistoricStock>();
                 
                 foreach (var api in apiObjects)

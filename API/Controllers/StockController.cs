@@ -37,6 +37,12 @@ namespace API.Controllers
             return await Mediator.Send(command);
         }
 
+        [HttpGet("user/stocks")]
+        public async Task<ActionResult<List<PortfolioStock>>> GetUserStocks()
+        {
+            return await Mediator.Send(new GetStocksByUser.Query());
+        }
+
         [HttpPost("sell/{id}")]
         public async Task<ActionResult<Unit>> SellStock(Guid id, SellStock.Command command)
         {

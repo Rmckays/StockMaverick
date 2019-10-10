@@ -88,19 +88,6 @@ namespace Application.Stock
                     Console.WriteLine("Your Stock was Updated");
                     _context.Stocks.Update(portfolioStock);
                 }
-//                var stock = new PortfolioStock
-//                {
-//                    PurchaseDate = request.PurchaseDate,
-//                    Amount = request.Amount,
-//                    Symbol = api.symbol,
-//                    CompanyName = api.companyName,
-//                    Exchange = api.primaryExchange,
-//                    Price = transactionPrice,
-//                    YearHigh = api.week52High,
-//                    Id = request.Id,
-//                    AppUser = user
-//                };
-
 
                 var transaction = new Transaction
                 {
