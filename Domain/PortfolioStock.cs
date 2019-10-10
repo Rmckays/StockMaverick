@@ -17,6 +17,8 @@ namespace Domain
         
         public DateTime PurchaseDate { get; set; }
         
+        public float PurchasePrice { get; set; }
+        
         public double Price { get; set; }
         
         public double YearHigh { get; set; }
