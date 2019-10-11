@@ -105,7 +105,6 @@ namespace Application.Stock
                 };
                 
                 var cost = transactionPrice * request.Amount;
-//                _context.Stocks.Add(stock);
                 user.CashAmount = user.CashAmount - cost;
                 
                 
