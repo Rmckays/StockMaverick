@@ -86,8 +86,8 @@ namespace Application.Stock
                     portfolioStock.Amount += request.Amount;
                     portfolioStock.PurchaseDate = request.PurchaseDate;
                     portfolioStock.PurchasePrice = (transactionPrice + (float) portfolioStock.Price) /
-                                                   (portfolioStock.Amount + request.Amount);
-                    portfolioStock.Price = transactionPrice;
+                                                   (portfolioStock.Amount);
+                    portfolioStock.Price += transactionPrice;
                     Console.WriteLine("Your Stock was Updated");
                     _context.Stocks.Update(portfolioStock);
                 }
