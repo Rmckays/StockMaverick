@@ -2,9 +2,11 @@ import React from 'react';
 import {Form, Button, Modal, Header} from "semantic-ui-react";
 import style from '../Components.module.css';
 
+interface IProps {
 
+}
 
-const Login = () => {
+const Login: React.FC<IProps> = () => {
 
     return (
         <Modal trigger={<Button className={style.btnRedModal}>Login</Button>} basic size='mini'>
