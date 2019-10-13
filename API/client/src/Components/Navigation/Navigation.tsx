@@ -1,8 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Menu, Image, Button} from 'semantic-ui-react'
 import style from '../Components.module.css';
 
-const Navigation = () => {
+interface IProps {
+
+}
+
+const Navigation: React.FC<IProps> = () => {
     // state = { activeItem: 'account' }
     //
     // handleItemClick = (e:any, { name }) => this.setState({ activeItem: name })
