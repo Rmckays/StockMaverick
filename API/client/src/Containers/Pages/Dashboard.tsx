@@ -7,6 +7,7 @@ import Login from "../../Components/Login/Login";
 import Backdrop from '../../Components/Backdrop/Backdrop';
 
 import style from '../Containers.module.css';
+import Showcase from "../Showcase";
 
 const Dashboard = () => {
     return(
@@ -19,8 +20,8 @@ const Dashboard = () => {
                         <Navigation/>
                     </Grid.Column>
                     <Grid.Column width={14}>
-                        <Container >
-                            <Login />
+                        <Container className={style.showcase}>
+                            <Showcase />
                         </Container>
                     </Grid.Column>
                 </Grid.Row>

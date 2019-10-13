@@ -3,3 +3,43 @@
     width: 100vw;
     height: 100vh;
 }
+
+.homeShowcaseContainer{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    padding: 20rem 0;
+    margin: auto;
+}
+
+.greeting {
+    text-align: center;
+    font-size: 4rem;
+    /*color: white;*/
+}
+
+.centerBtns{
+    display: flex;
+    width: 100%;
+    align-content: center;
+    justify-content: center;
+}
+
+.textCenter {
+    text-align: center;
+}
+
+.showcase {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.commandCenter {
+    width: 100%;
+    border-radius: 0.25rem;
+    margin: 10rem 0;
+    height: 80%;
+    background: rgba(255,255,255, 0.7);
+}

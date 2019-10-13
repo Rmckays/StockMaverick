@@ -7,7 +7,7 @@ const Footer = () => {
         <div
             id='footer'
             className={style.footer}>
-            <p className={style.textWhite}>Comet Chat App &copy; {date}</p>
+            <p className={style.textWhite}>StockMaverick &copy; {date}</p>
         </div>
     );
 };

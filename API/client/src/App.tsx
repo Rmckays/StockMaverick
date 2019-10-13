@@ -1,17 +1,23 @@
 import React from 'react';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
+
 import './App.css';
-import Login from "./Components/Login/Login";
-import Footer from "./Components/Footer/Footer.";
-import Header from "./Components/Header/Header";
-import Backdrop from "./Components/Backdrop/Backdrop";
-import Navigation from "./Components/Navigation/Navigation";
-import Dashboard from './Containers/Pages/Dashboard';
+
+import Home from "./Containers/Pages/Home";
+import Dashboard from "./Containers/Pages/Dashboard";
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <Dashboard />
-    </div>
+
+          <BrowserRouter>
+              <div className="App">
+                  <Switch>
+                      <Route exact path="/" component={Home}/>
+                      <Route exact path="/dashboard" component={Dashboard} />
+                  </Switch>
+              </div>
+          </BrowserRouter>
+
   );
 };
 
