@@ -1,7 +1,7 @@
 import React from 'react';
 import style from '../Components.module.css';
 
-const date = new Date().getFullYear();
+const date: number = new Date().getFullYear();
 const Footer = () => {
     return (
         <div
