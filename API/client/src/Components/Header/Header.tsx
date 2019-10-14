@@ -6,6 +6,7 @@ const Header= () => {
         <div
             id='header'
             className={style.header}>
+            <h1 className={style.textWhite}>StockMaverick</h1>
         </div>
     );
 };

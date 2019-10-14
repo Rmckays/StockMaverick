@@ -95,7 +95,7 @@
 
 .header{
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     z-index: 1;
     position: fixed;
@@ -103,7 +103,7 @@
     right: 0;
     left: 0;
     background: #333;
-    padding: 2rem 0;
+    padding: 2rem;
 }
 
 .btnRedModal {
