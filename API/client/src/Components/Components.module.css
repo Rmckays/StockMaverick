@@ -78,12 +78,13 @@
 }
 
 .graphCard {
-    margin: 1rem !important;
-    width: 610px !important;
-    height: 410px !important;
+    /*margin: 1rem !important;*/
+    width: 95% !important;
+    height: 50% !important;
     display: flex;
-    align-content: center;
-    justify-content: center;
+    margin: 1rem auto !important;
+    /*align-content: center;*/
+    /*justify-content: center;*/
 }
 
 .navigation > .profileImage {

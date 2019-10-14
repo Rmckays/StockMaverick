@@ -11,8 +11,8 @@ const GraphCard = () => {
     return (
         <Card raised className={style.graphCard}>
             <Chart
-                width={'600px'}
-                height={'400px'}
+                width={'95%'}
+                height={'95%'}
                 chartType="LineChart"
                 loader={<div>Loading Chart</div>}
                 data={[
@@ -38,8 +38,6 @@ const GraphCard = () => {
                         title:
                             'Market Price of AAPL',
                     },
-                    width: 600,
-                    height: 400,
                     series: {
                         // Gives each series an axis name that matches the Y-axis below.
                         0: { axis: 'Price' },

@@ -20,9 +20,7 @@ const Dashboard = () => {
                         <Navigation/>
                     </Grid.Column>
                     <Grid.Column width={14}>
-                        <Container className={style.showcase}>
-                            <Showcase />
-                        </Container>
+                        <Showcase />
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
