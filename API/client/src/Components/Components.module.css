@@ -77,6 +77,15 @@
     height: 100%;
 }
 
+.graphCard {
+    margin: 1rem !important;
+    width: 610px !important;
+    height: 410px !important;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
 .navigation > .profileImage {
     margin: 2rem 0  2rem 1rem !important;
     padding: 1rem;
