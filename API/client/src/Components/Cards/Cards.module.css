@@ -1,0 +1,19 @@
+.graphCard {
+    width: 95% !important;
+    height: 20% !important;
+    display: flex;
+    margin: 1rem auto !important;
+}
+
+.chart {
+    align-self: center !important;
+    justify-self: center !important;
+    margin: auto;
+}
+
+.walletCard {
+    width: 95% !important;
+    height: 30% !important;
+    overflow: auto;
+    margin: 1rem auto !important;
+}

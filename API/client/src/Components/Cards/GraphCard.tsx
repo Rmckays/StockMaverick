@@ -1,7 +1,7 @@
 import React from 'react';
 import {Chart} from "react-google-charts";
 
-import style from '../Components.module.css'
+import style from './Cards.module.css';
 import {Card} from "semantic-ui-react";
 
 
@@ -11,8 +11,9 @@ const GraphCard = () => {
     return (
         <Card raised className={style.graphCard}>
             <Chart
-                width={'95%'}
-                height={'95%'}
+                className={style.chart}
+                width={'65%'}
+                height={'55%'}
                 chartType="LineChart"
                 loader={<div>Loading Chart</div>}
                 data={[
