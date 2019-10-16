@@ -12,8 +12,6 @@ const GraphCard = () => {
         <Card raised className={style.graphCard}>
             <Chart
                 className={style.chart}
-                width={'65%'}
-                height={'55%'}
                 chartType="LineChart"
                 loader={<div>Loading Chart</div>}
                 data={[

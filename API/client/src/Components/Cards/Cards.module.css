@@ -1,19 +1,25 @@
 .graphCard {
     width: 95% !important;
-    height: 20% !important;
+    height: 300px !important;
     display: flex;
-    margin: 1rem auto !important;
+    margin: auto !important;
 }
 
 .chart {
     align-self: center !important;
     justify-self: center !important;
     margin: auto;
+    height: 95%;
+    width: 95%;
+    padding: 0 !important;
+    position: relative;
+    /*height: 300px;*/
 }
 
 .walletCard {
     width: 95% !important;
-    height: 30% !important;
-    overflow: auto;
-    margin: 1rem auto !important;
+    overflow-y: scroll;
+    height: 300px !important;
+    margin: 1rem auto 0 auto !important;
+    max-height: 200px;
 }
