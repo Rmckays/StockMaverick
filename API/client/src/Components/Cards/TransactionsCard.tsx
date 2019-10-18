@@ -5,12 +5,12 @@ import {Table} from "semantic-ui-react";
 const TransactionCard = () => {
     return(
         <div className={style.transactionCard} >
-            <Table singleLine>
+            <Table singleLine sortable={true} textAlign="center">
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Transaction Date</Table.HeaderCell>
                         <Table.HeaderCell>Type</Table.HeaderCell>
-                        <Table.HeaderCell>Stock Symbol</Table.HeaderCell>
+                        <Table.HeaderCell>Symbol</Table.HeaderCell>
                         <Table.HeaderCell>Company</Table.HeaderCell>
                         <Table.HeaderCell>Transaction Amount $USD</Table.HeaderCell>
                         <Table.HeaderCell>Stock Price $USD</Table.HeaderCell>
