@@ -11,7 +11,8 @@ const TransactionCard = () => {
                         <Table.HeaderCell>Transaction Date</Table.HeaderCell>
                         <Table.HeaderCell>Type</Table.HeaderCell>
                         <Table.HeaderCell>Stock Symbol</Table.HeaderCell>
-                        <Table.HeaderCell>Amount $USD</Table.HeaderCell>
+                        <Table.HeaderCell>Company</Table.HeaderCell>
+                        <Table.HeaderCell>Transaction Amount $USD</Table.HeaderCell>
                         <Table.HeaderCell>Stock Price $USD</Table.HeaderCell>
                         <Table.HeaderCell>Amount of Stock</Table.HeaderCell>
                     </Table.Row>
@@ -21,6 +22,7 @@ const TransactionCard = () => {
                         <Table.Cell>October 15, 2019</Table.Cell>
                         <Table.Cell>Buy</Table.Cell>
                         <Table.Cell>AAPL</Table.Cell>
+                        <Table.Cell>Apple Inc.</Table.Cell>
                         <Table.Cell>$3126.70</Table.Cell>
                         <Table.Cell>$312.67</Table.Cell>
                         <Table.Cell>10</Table.Cell>
@@ -29,6 +31,7 @@ const TransactionCard = () => {
                         <Table.Cell>October 19, 2019</Table.Cell>
                         <Table.Cell>Buy</Table.Cell>
                         <Table.Cell>AAPL</Table.Cell>
+                        <Table.Cell>Apple Inc.</Table.Cell>
                         <Table.Cell>$3126.70</Table.Cell>
                         <Table.Cell>$312.67</Table.Cell>
                         <Table.Cell>10</Table.Cell>
@@ -37,7 +40,8 @@ const TransactionCard = () => {
                         <Table.Cell>October 11, 2019</Table.Cell>
                         <Table.Cell>Sell</Table.Cell>
                         <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>$5250.00</Table.Cell>
+                        <Table.Cell>Alphabet Inc.</Table.Cell>
+                        <Table.Cell>$3126.70</Table.Cell>
                         <Table.Cell>$1053.29</Table.Cell>
                         <Table.Cell>5</Table.Cell>
                     </Table.Row>
@@ -45,7 +49,8 @@ const TransactionCard = () => {
                         <Table.Cell>October 11, 2019</Table.Cell>
                         <Table.Cell>Sell</Table.Cell>
                         <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>$5250.00</Table.Cell>
+                        <Table.Cell>Alphabet Inc.</Table.Cell>
+                        <Table.Cell>$3126.70</Table.Cell>
                         <Table.Cell>$1053.29</Table.Cell>
                         <Table.Cell>5</Table.Cell>
                     </Table.Row>
@@ -53,7 +58,8 @@ const TransactionCard = () => {
                         <Table.Cell>October 11, 2019</Table.Cell>
                         <Table.Cell>Sell</Table.Cell>
                         <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>$5250.00</Table.Cell>
+                        <Table.Cell>Alphabet Inc.</Table.Cell>
+                        <Table.Cell>$3126.70</Table.Cell>
                         <Table.Cell>$1053.29</Table.Cell>
                         <Table.Cell>5</Table.Cell>
                     </Table.Row>
@@ -61,7 +67,8 @@ const TransactionCard = () => {
                         <Table.Cell>October 11, 2019</Table.Cell>
                         <Table.Cell>Sell</Table.Cell>
                         <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>$5250.00</Table.Cell>
+                        <Table.Cell>Alphabet Inc.</Table.Cell>
+                        <Table.Cell>$3126.70</Table.Cell>
                         <Table.Cell>$1053.29</Table.Cell>
                         <Table.Cell>5</Table.Cell>
                     </Table.Row>
@@ -69,47 +76,8 @@ const TransactionCard = () => {
                         <Table.Cell>October 11, 2019</Table.Cell>
                         <Table.Cell>Sell</Table.Cell>
                         <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>$5250.00</Table.Cell>
-                        <Table.Cell>$1053.29</Table.Cell>
-                        <Table.Cell>5</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Sell</Table.Cell>
-                        <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>$5250.00</Table.Cell>
-                        <Table.Cell>$1053.29</Table.Cell>
-                        <Table.Cell>5</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Sell</Table.Cell>
-                        <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>$5250.00</Table.Cell>
-                        <Table.Cell>$1053.29</Table.Cell>
-                        <Table.Cell>5</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Sell</Table.Cell>
-                        <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>$5250.00</Table.Cell>
-                        <Table.Cell>$1053.29</Table.Cell>
-                        <Table.Cell>5</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Sell</Table.Cell>
-                        <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>$5250.00</Table.Cell>
-                        <Table.Cell>$1053.29</Table.Cell>
-                        <Table.Cell>5</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Sell</Table.Cell>
-                        <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>$5250.00</Table.Cell>
+                        <Table.Cell>Alphabet Inc.</Table.Cell>
+                        <Table.Cell>$3126.70</Table.Cell>
                         <Table.Cell>$1053.29</Table.Cell>
                         <Table.Cell>5</Table.Cell>
                     </Table.Row>
@@ -117,6 +85,7 @@ const TransactionCard = () => {
                         <Table.Cell>October 15, 2019</Table.Cell>
                         <Table.Cell>Buy</Table.Cell>
                         <Table.Cell>AAPL</Table.Cell>
+                        <Table.Cell>Apple Inc.</Table.Cell>
                         <Table.Cell>$3126.70</Table.Cell>
                         <Table.Cell>$312.67</Table.Cell>
                         <Table.Cell>10</Table.Cell>
@@ -125,6 +94,7 @@ const TransactionCard = () => {
                         <Table.Cell>October 19, 2019</Table.Cell>
                         <Table.Cell>Buy</Table.Cell>
                         <Table.Cell>AAPL</Table.Cell>
+                        <Table.Cell>Apple Inc.</Table.Cell>
                         <Table.Cell>$3126.70</Table.Cell>
                         <Table.Cell>$312.67</Table.Cell>
                         <Table.Cell>10</Table.Cell>
@@ -133,7 +103,8 @@ const TransactionCard = () => {
                         <Table.Cell>October 11, 2019</Table.Cell>
                         <Table.Cell>Sell</Table.Cell>
                         <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>$5250.00</Table.Cell>
+                        <Table.Cell>Alphabet Inc.</Table.Cell>
+                        <Table.Cell>$3126.70</Table.Cell>
                         <Table.Cell>$1053.29</Table.Cell>
                         <Table.Cell>5</Table.Cell>
                     </Table.Row>
@@ -141,7 +112,8 @@ const TransactionCard = () => {
                         <Table.Cell>October 11, 2019</Table.Cell>
                         <Table.Cell>Sell</Table.Cell>
                         <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>$5250.00</Table.Cell>
+                        <Table.Cell>Alphabet Inc.</Table.Cell>
+                        <Table.Cell>$3126.70</Table.Cell>
                         <Table.Cell>$1053.29</Table.Cell>
                         <Table.Cell>5</Table.Cell>
                     </Table.Row>
@@ -149,7 +121,8 @@ const TransactionCard = () => {
                         <Table.Cell>October 11, 2019</Table.Cell>
                         <Table.Cell>Sell</Table.Cell>
                         <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>$5250.00</Table.Cell>
+                        <Table.Cell>Alphabet Inc.</Table.Cell>
+                        <Table.Cell>$3126.70</Table.Cell>
                         <Table.Cell>$1053.29</Table.Cell>
                         <Table.Cell>5</Table.Cell>
                     </Table.Row>
@@ -157,7 +130,8 @@ const TransactionCard = () => {
                         <Table.Cell>October 11, 2019</Table.Cell>
                         <Table.Cell>Sell</Table.Cell>
                         <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>$5250.00</Table.Cell>
+                        <Table.Cell>Alphabet Inc.</Table.Cell>
+                        <Table.Cell>$3126.70</Table.Cell>
                         <Table.Cell>$1053.29</Table.Cell>
                         <Table.Cell>5</Table.Cell>
                     </Table.Row>
@@ -165,7 +139,35 @@ const TransactionCard = () => {
                         <Table.Cell>October 11, 2019</Table.Cell>
                         <Table.Cell>Sell</Table.Cell>
                         <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>$5250.00</Table.Cell>
+                        <Table.Cell>Alphabet Inc.</Table.Cell>
+                        <Table.Cell>$3126.70</Table.Cell>
+                        <Table.Cell>$1053.29</Table.Cell>
+                        <Table.Cell>5</Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                        <Table.Cell>October 15, 2019</Table.Cell>
+                        <Table.Cell>Buy</Table.Cell>
+                        <Table.Cell>AAPL</Table.Cell>
+                        <Table.Cell>Apple Inc.</Table.Cell>
+                        <Table.Cell>$3126.70</Table.Cell>
+                        <Table.Cell>$312.67</Table.Cell>
+                        <Table.Cell>10</Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                        <Table.Cell>October 19, 2019</Table.Cell>
+                        <Table.Cell>Buy</Table.Cell>
+                        <Table.Cell>AAPL</Table.Cell>
+                        <Table.Cell>Apple Inc.</Table.Cell>
+                        <Table.Cell>$3126.70</Table.Cell>
+                        <Table.Cell>$312.67</Table.Cell>
+                        <Table.Cell>10</Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                        <Table.Cell>October 11, 2019</Table.Cell>
+                        <Table.Cell>Sell</Table.Cell>
+                        <Table.Cell>GOOGL</Table.Cell>
+                        <Table.Cell>Alphabet Inc.</Table.Cell>
+                        <Table.Cell>$3126.70</Table.Cell>
                         <Table.Cell>$1053.29</Table.Cell>
                         <Table.Cell>5</Table.Cell>
                     </Table.Row>
@@ -173,7 +175,8 @@ const TransactionCard = () => {
                         <Table.Cell>October 11, 2019</Table.Cell>
                         <Table.Cell>Sell</Table.Cell>
                         <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>$5250.00</Table.Cell>
+                        <Table.Cell>Alphabet Inc.</Table.Cell>
+                        <Table.Cell>$3126.70</Table.Cell>
                         <Table.Cell>$1053.29</Table.Cell>
                         <Table.Cell>5</Table.Cell>
                     </Table.Row>
@@ -181,7 +184,25 @@ const TransactionCard = () => {
                         <Table.Cell>October 11, 2019</Table.Cell>
                         <Table.Cell>Sell</Table.Cell>
                         <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>$5250.00</Table.Cell>
+                        <Table.Cell>Alphabet Inc.</Table.Cell>
+                        <Table.Cell>$3126.70</Table.Cell>
+                        <Table.Cell>$1053.29</Table.Cell>
+                        <Table.Cell>5</Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                        <Table.Cell>October 11, 2019</Table.Cell>
+                        <Table.Cell>Sell</Table.Cell>
+                        <Table.Cell>GOOGL</Table.Cell>
+                        <Table.Cell>$3126.70</Table.Cell>
+                        <Table.Cell>$1053.29</Table.Cell>
+                        <Table.Cell>5</Table.Cell>
+                    </Table.Row>
+                    <Table.Row>
+                        <Table.Cell>October 11, 2019</Table.Cell>
+                        <Table.Cell>Sell</Table.Cell>
+                        <Table.Cell>GOOGL</Table.Cell>
+                        <Table.Cell>Alphabet Inc.</Table.Cell>
+                        <Table.Cell>$3126.70</Table.Cell>
                         <Table.Cell>$1053.29</Table.Cell>
                         <Table.Cell>5</Table.Cell>
                     </Table.Row>

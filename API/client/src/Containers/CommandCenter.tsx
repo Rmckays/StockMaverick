@@ -10,7 +10,7 @@ import TransactionCard from "../Components/Cards/TransactionsCard";
 const CommandCenter = () => {
     return (
         <div className={style.commandCenter}>
-            <Grid columns={2}  divided >
+            <Grid columns={2} stretched divided >
                 <Grid.Row >
                     <Grid.Column width={9}>
                         <GraphCard />
