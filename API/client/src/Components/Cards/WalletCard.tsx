@@ -3,7 +3,7 @@ import { Table } from 'semantic-ui-react'
 
 import style from './Cards.module.css';
 
-const Wallet = () => {
+const WalletCard = () => {
     return(
         <div className={style.walletCard} >
             <Table singleLine>
@@ -12,7 +12,7 @@ const Wallet = () => {
                         <Table.HeaderCell>Transaction Date</Table.HeaderCell>
                         <Table.HeaderCell>Type</Table.HeaderCell>
                         <Table.HeaderCell>Stock Symbol</Table.HeaderCell>
-                        <Table.HeaderCell>Price</Table.HeaderCell>
+                        <Table.HeaderCell>Amount $USD</Table.HeaderCell>
                         <Table.HeaderCell>Amount of Stock</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
@@ -72,4 +72,4 @@ const Wallet = () => {
     )
 };
 
-export default Wallet;
+export default WalletCard;
