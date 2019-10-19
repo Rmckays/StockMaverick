@@ -1,5 +1,5 @@
 import React from "react";
-import {Form, Button, Modal, Header} from "semantic-ui-react";
+import {Form} from "semantic-ui-react";
 import style from './Cards.module.css';
 import StockSearch from "../StockSearch/StockSearch";
 

@@ -6,6 +6,7 @@ import Login from "../../Components/Login/Login";
 import Backdrop from "../../Components/Backdrop/Backdrop";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer.";
+import Register from "../../Components/Register/Register";
 
 const Home = () => {
     return(
@@ -18,6 +19,7 @@ const Home = () => {
                     already a member sign up now and receive $100 on us to start your trading.</h2>
                 <div className={style.centerBtns}>
                     <Login />
+                    <Register />
                 </div>
             </Container>
             <Footer/>
