@@ -193,6 +193,7 @@ const TransactionCard = () => {
                         <Table.Cell>October 11, 2019</Table.Cell>
                         <Table.Cell>Sell</Table.Cell>
                         <Table.Cell>GOOGL</Table.Cell>
+                        <Table.Cell>Alphabet Inc.</Table.Cell>
                         <Table.Cell>$3126.70</Table.Cell>
                         <Table.Cell>$1053.29</Table.Cell>
                         <Table.Cell>5</Table.Cell>

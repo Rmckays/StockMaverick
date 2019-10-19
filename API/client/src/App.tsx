@@ -5,6 +5,7 @@ import './App.css';
 
 import Home from "./Containers/Pages/Home";
 import Dashboard from "./Containers/Pages/Dashboard";
+import Portfolio from "./Containers/Pages/Portfolio";
 
 const App: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const App: React.FC = () => {
                   <Switch>
                       <Route exact path="/" component={Home}/>
                       <Route exact path="/dashboard" component={Dashboard} />
+                      <Route exact path="/portfolio" component={Portfolio} />
                   </Switch>
               </div>
           </BrowserRouter>
