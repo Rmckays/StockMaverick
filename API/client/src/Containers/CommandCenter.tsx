@@ -2,9 +2,6 @@ import React from 'react';
 
 import style from './Containers.module.css';
 import { Grid } from "semantic-ui-react";
-import WalletCard from "../Components/Cards/WalletCard";
-import TransactionCard from "../Components/Cards/TransactionsCard";
-import StockCard from "../Components/Cards/StockCard";
 
 interface IProps {
     GraphCard: React.FC<any> | null,
@@ -13,7 +10,7 @@ interface IProps {
     StockCard: React.FC<any> | null
 }
 
-const CommandCenter: React.FC<IProps> = ({GraphCard, TransactionCard, WalletCard}) => {
+const CommandCenter: React.FC<IProps> = ({GraphCard, TransactionCard, WalletCard, StockCard}) => {
     const renderGraph = (GraphCard) ? <GraphCard /> : null;
     const renderWallet = (WalletCard) ? <WalletCard /> : null;
     const renderTransactions = (TransactionCard) ? <TransactionCard /> : null;
