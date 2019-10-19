@@ -22,7 +22,11 @@ const Dashboard = () => {
                         <Navigation/>
                     </Grid.Column>
                     <Grid.Column width={14}>
-                        <Showcase GraphCard={GraphCard} TransactionCard={TransactionCard} WalletCard={WalletCard}/>
+                        <Showcase
+                            GraphCard={GraphCard}
+                            TransactionCard={TransactionCard}
+                            WalletCard={WalletCard}
+                            StockCard={null}/>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>

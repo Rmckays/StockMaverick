@@ -30,7 +30,16 @@
     border-radius: 0.25rem;
     width: 95% !important;
     overflow-y: scroll;
-    /*height: 1050px !important;*/
     margin: auto !important;
     max-height: 1000px;
+}
+
+.stockCard {
+    background-color: white;
+    border-radius: 0.25rem;
+    width: 95% !important;
+    height: 150px !important;
+    margin: 1rem auto 0 auto !important;
+    padding: 1rem;
+    max-height: 150px;
 }

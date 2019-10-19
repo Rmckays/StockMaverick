@@ -9,6 +9,7 @@ import Showcase from "../Showcase";
 import Footer from "../../Components/Footer/Footer.";
 import TransactionCard from "../../Components/Cards/TransactionsCard";
 import GraphCard from "../../Components/Cards/GraphCard";
+import StockCard from "../../Components/Cards/StockCard";
 
 
 const Portfolio = () => {
@@ -22,7 +23,11 @@ const Portfolio = () => {
                         <Navigation/>
                     </Grid.Column>
                     <Grid.Column width={14}>
-                        <Showcase GraphCard={GraphCard} TransactionCard={TransactionCard} WalletCard={null}/>
+                        <Showcase
+                            GraphCard={GraphCard}
+                            TransactionCard={TransactionCard}
+                            StockCard={StockCard}
+                            WalletCard={null}/>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>

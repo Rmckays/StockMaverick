@@ -5,6 +5,14 @@
     align-items: center;
 }
 
+.containerStock {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60% !important;
+}
+
 .form{
     width: 100%;
     padding: 1rem;
@@ -43,6 +51,12 @@
     color: white !important;
 }
 
+.stockLabel {
+    color: white !important;
+    display: block;
+    padding: 0.5rem;
+}
+
 .headerText {
     color: white !important;
     margin-bottom: 0 !important;
@@ -54,6 +68,30 @@
     color: black !important;
     width: 100%;
     margin-top: 1rem !important;
+}
+
+.stockBtns {
+    display: flex;
+    justify-content: space-between !important;
+}
+
+.btnGreenStockModal {
+    background-color: #54a86a !important;
+    color: black !important;
+    width: 30%;
+    height: 100%;
+}
+
+.btnRedStockModal {
+    background-color: #CA3939 !important;
+    color: black !important;
+    width: 30%;
+    height: 100%;
+}
+
+.stockModalInput {
+    width: 30%;
+    height: 100%;
 }
 
 .footer {
@@ -102,5 +140,11 @@
     background-color: #CA3939 !important;
     color: black !important;
     margin: 1rem !important;
+}
+
+.btnRedModalSearch {
+    width: 100%;
+    background-color: #CA3939 !important;
+    color: black;
 }
 
