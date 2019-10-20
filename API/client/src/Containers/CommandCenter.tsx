@@ -4,11 +4,11 @@ import style from './Containers.module.css';
 import { Grid } from "semantic-ui-react";
 
 interface IProps {
-    GraphCard: React.FC<any> | null,
-    WalletCard: React.FC<any> | null,
-    TransactionCard: React.FC<any> | null,
-    StockCard: React.FC<any> | null,
-    BalanceCard: React.FC<any> | null
+    GraphCard: React.FC | null,
+    WalletCard: React.FC | null,
+    TransactionCard: React.FC | null,
+    StockCard: React.FC | null,
+    BalanceCard: React.FC | null
 }
 
 const CommandCenter: React.FC<IProps> = ({GraphCard, TransactionCard, WalletCard, StockCard, BalanceCard}) => {

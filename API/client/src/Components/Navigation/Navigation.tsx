@@ -8,11 +8,6 @@ interface IProps {
 }
 
 const Navigation: React.FC<IProps> = () => {
-    // state = { activeItem: 'account' }
-    //
-    // handleItemClick = (e:any, { name }) => this.setState({ activeItem: name })
-
-        // const { activeItem } = this.state
 
         return (
             <Menu vertical className={style.navigation}>
