@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import {Menu, Image, Button} from 'semantic-ui-react'
 import style from '../Components.module.css';
+import {NavLink} from "react-router-dom";
 
 interface IProps {
 
@@ -16,31 +17,11 @@ const Navigation: React.FC<IProps> = () => {
         return (
             <Menu vertical className={style.navigation}>
                 <Image className={style.profileImage} src='https://react.semantic-ui.com/images/wireframe/square-image.png' size='small' circular />
-                <Menu.Item
-                    name='dashboard'
-                    // active={activeItem === 'account'}
-                    // onClick={this.handleItemClick}
-                />
-                <Menu.Item
-                    name='portfolio'
-                    // active={activeItem === 'settings'}
-                    // onClick={this.handleItemClick}
-                />
-                <Menu.Item
-                    name='wallet'
-                    // active={activeItem === 'settings'}
-                    // onClick={this.handleItemClick}
-                />
-                <Menu.Item
-                    name='profile'
-                    // active={activeItem === 'settings'}
-                    // onClick={this.handleItemClick}
-                />
-                <Menu.Item
-                    name='about'
-                    // active={activeItem === 'settings'}
-                    // onClick={this.handleItemClick}
-                />
+                <NavLink className={style.navLinksTop} to='/dashboard'> Dashboard </NavLink>
+                <NavLink className={style.navLinks} to='/portfolio'> Portfolio </NavLink>
+                <NavLink className={style.navLinks} to='/wallet'> Wallet </NavLink>
+                <NavLink className={style.navLinks} to='/profile'> Profile </NavLink>
+                <NavLink className={style.navLinksBottom} to='/about'> About </NavLink>
                 <Button className={style.btnRed} >Logout</Button>
 
             </Menu>

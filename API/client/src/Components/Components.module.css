@@ -130,6 +130,52 @@
     justify-self: center;
 }
 
+.navLinks {
+    display: block;
+    text-align: left;
+    padding: 0.5rem 2rem;
+    border-bottom: 1px solid lightgray;
+    color: black;
+    font-weight: 700;
+    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-kerning: auto;
+}
+
+.navLinks:Hover {
+    color: #CA3939;
+}
+
+.navLinksTop {
+    display: block;
+    text-align: left;
+    padding: 0.5rem 2rem;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+    color: black;
+    font-weight: 700;
+    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-kerning: auto;
+}
+
+.navLinksTop:Hover {
+    color: #CA3939;
+}
+
+.navLinksBottom {
+    display: block;
+    text-align: left;
+    padding: 0.5rem 2rem;
+    border-bottom: 1px solid lightgray;
+    color: black;
+    font-weight: 700;
+    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-kerning: auto;
+}
+
+.navLinksBottom:Hover {
+    color: #CA3939;
+}
+
 .header{
     display: flex;
     justify-content: start;
