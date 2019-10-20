@@ -22,7 +22,7 @@
     overflow-y: scroll;
     height: 300px !important;
     margin: 1rem auto 0 auto !important;
-    max-height: 300px;
+    /*max-height: 300px;*/
 }
 
 .transactionCard {
@@ -42,4 +42,29 @@
     margin: 1rem auto 0 auto !important;
     padding: 1rem;
     max-height: 150px;
+}
+
+.balanceCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: white;
+    border-radius: 0.25rem;
+    width: 95% !important;
+    height: 500px !important;
+    margin: 1rem auto 0 auto !important;
+    padding: 1rem;
+    max-height: 500px;
+}
+
+.balanceCard > h2 {
+    font-size: 3rem;
+    margin: 2rem 0;
+}
+
+.tempBtn {
+    width: 100%;
+    background-color: #CA3939 !important;
+    color: black;
 }

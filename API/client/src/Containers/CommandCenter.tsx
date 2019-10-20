@@ -7,20 +7,23 @@ interface IProps {
     GraphCard: React.FC<any> | null,
     WalletCard: React.FC<any> | null,
     TransactionCard: React.FC<any> | null,
-    StockCard: React.FC<any> | null
+    StockCard: React.FC<any> | null,
+    BalanceCard: React.FC<any> | null
 }
 
-const CommandCenter: React.FC<IProps> = ({GraphCard, TransactionCard, WalletCard, StockCard}) => {
+const CommandCenter: React.FC<IProps> = ({GraphCard, TransactionCard, WalletCard, StockCard, BalanceCard}) => {
     const renderGraph = (GraphCard) ? <GraphCard /> : null;
     const renderWallet = (WalletCard) ? <WalletCard /> : null;
     const renderTransactions = (TransactionCard) ? <TransactionCard /> : null;
     const renderStocks = (StockCard) ? <StockCard /> : null;
+    const renderBalance = (BalanceCard) ? <BalanceCard /> : null;
 
     return (
         <div className={style.commandCenter}>
             <Grid columns={2} stretched divided >
                 <Grid.Row >
                     <Grid.Column width={9}>
+                        {renderBalance}
                         {renderGraph}
                         {renderWallet}
                         {renderStocks}

@@ -27,7 +27,8 @@ const Portfolio = () => {
                             GraphCard={GraphCard}
                             TransactionCard={TransactionCard}
                             StockCard={StockCard}
-                            WalletCard={null}/>
+                            WalletCard={null}
+                            BalanceCard={null}/>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>

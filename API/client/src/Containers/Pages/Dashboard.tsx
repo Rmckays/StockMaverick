@@ -26,7 +26,8 @@ const Dashboard = () => {
                             GraphCard={GraphCard}
                             TransactionCard={TransactionCard}
                             WalletCard={WalletCard}
-                            StockCard={null}/>
+                            StockCard={null}
+                            BalanceCard={null}/>
                     </Grid.Column>
                 </Grid.Row>
             </Grid>
