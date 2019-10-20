@@ -52,19 +52,46 @@
     background-color: white;
     border-radius: 0.25rem;
     width: 95% !important;
-    height: 500px !important;
+    height: 400px !important;
     margin: 1rem auto 0 auto !important;
     padding: 1rem;
-    max-height: 500px;
+    max-height: 400px;
 }
 
 .balanceCard > h2 {
     font-size: 3rem;
-    margin: 2rem 0;
+    margin: 0;
 }
 
-.tempBtn {
-    width: 100%;
+.balanceCard > h3 {
+    font-size: 2.5rem;
+    justify-self: center;
+    margin: auto;
+}
+
+.balanceActions {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.balanceInput {
+    width: 80% !important;
+    margin: 0.5rem auto !important;
+}
+
+.tempBtnRed {
+    width: 80%;
+    margin: 0.5rem auto !important;
     background-color: #CA3939 !important;
     color: black;
 }
+
+.tempBtnGreen {
+    width: 80%;
+    margin: 0.5rem auto !important;
+    background-color: #54a86a !important;
+    color: black;
+}
+
