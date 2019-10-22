@@ -7,8 +7,9 @@ class UserStore {
     @observable userDisplayName: string = '';
     @observable userPassword: string = '';
     @observable userEmail: string = '';
-    @observable walletFunds: number = 0;
-    @observable depositAmount: number = 0;
+    @observable userAuthenticated = false;
+    @observable walletFunds = 0;
+    @observable depositAmount = 0;
 }
 
 export default createContext(new UserStore());
