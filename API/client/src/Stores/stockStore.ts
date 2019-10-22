@@ -3,7 +3,7 @@ import {observable} from "mobx";
 import {IStockTransaction} from "../Models/stockTransactionModel";
 import {IStock} from "../Models/stockModel";
 
-class stockStore {
+class StockStore {
     @observable stockTransactions: IStockTransaction[] = [];
     @observable stocks: IStock[] = [];
     @observable stockSearchSymbol: string = '';
@@ -11,4 +11,4 @@ class stockStore {
     @observable stockQueryHistory: [] = [];
 }
 
-export default createContext(new stockStore());
+export default createContext(new StockStore());
