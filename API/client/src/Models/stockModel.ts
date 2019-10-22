@@ -1,10 +1,9 @@
 export interface IStock {
+    id: string;
     symbol: string;
     companyName: string;
-    openPrice: number;
-    closePrice: number | null;
-    priceChange: number | null;
-    volume: number;
-    yearlyHigh: number;
-    yearlyLow: number;
+    purchaseDate: Date;
+    price: number;
+    yearHigh: number;
+    amount: number;
 }

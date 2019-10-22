@@ -1,8 +1,14 @@
 import {createContext} from "react";
 import {observable} from "mobx";
+import {IStockTransaction} from "../Models/stockTransactionModel";
+import {IStock} from "../Models/stockModel";
 
 class stockStore {
-    @observable title = "Hello from MobX";
+    @observable stockTransactions: IStockTransaction[] = [];
+    @observable stocks: IStock[] = [];
+    @observable stockSearchSymbol: string = '';
+    @observable stockQuery: string = '';
+    @observable stockQueryHistory: [] = [];
 }
 
-export default createContext(stockStore);
+export default createContext(new stockStore());
