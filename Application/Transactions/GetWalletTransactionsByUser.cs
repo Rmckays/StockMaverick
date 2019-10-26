@@ -11,7 +11,7 @@ using Persistence;
 
 namespace Application.Wallet
 {
-    public class GetTransactionsByUser
+    public class GetWalletTransactionsByUser
     {
 
         public class Query : IRequest<List<WalletTransaction>>
