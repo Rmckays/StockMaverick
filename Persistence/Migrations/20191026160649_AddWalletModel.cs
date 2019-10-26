@@ -14,7 +14,7 @@ namespace Persistence.Migrations
                     Id = table.Column<Guid>(nullable: false),
                     Type = table.Column<string>(nullable: true),
                     TransactionDate = table.Column<DateTime>(nullable: false),
-                    Amount = table.Column<int>(nullable: false),
+                    Amount = table.Column<float>(nullable: false),
                     AppUserId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
