@@ -72,7 +72,6 @@ namespace Application.User
                 
                 throw new Exception("Problem Adding Funds");
             }
-
         }
     }
 }

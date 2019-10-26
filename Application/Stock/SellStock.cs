@@ -105,7 +105,8 @@ namespace Application.Stock
                 
                 stock.Amount = stock.Amount - request.Amount;
                 user.CashAmount = user.CashAmount + transactionPrice;
-                
+
+                _context.WalletTransactions.Add(walletTransaction);
                 _context.Transactions.Add(transaction);
                 
                 var success = await _context.SaveChangesAsync() > 0;

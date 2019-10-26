@@ -111,7 +111,7 @@ namespace Application.Stock
                     Id = new Guid(),
                     Type = "Stock Purchase",
                     TransactionDate = request.PurchaseDate,
-                    Amount = cost,
+                    Amount = -cost,
                     AppUser = user
                 };
                 
