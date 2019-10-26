@@ -18,7 +18,7 @@ namespace Application.Stock
         public class Command : IRequest
         { 
             public string Symbol {get; set;}
-            
+
             public Guid Id { get; set; }
             
             public int Amount { get; set; }
@@ -105,10 +105,22 @@ namespace Application.Stock
                 };
                 
                 var cost = transactionPrice * request.Amount;
+                
+                var walletTransaction = new WalletTransaction
+                {
+                    Id = new Guid(),
+                    Type = "Stock Purchase",
+                    TransactionDate = request.PurchaseDate,
+                    Amount = cost,
+                    AppUser = user
+                };
+                
+                
                 user.CashAmount = user.CashAmount - cost;
-                
-                
+
+                _context.WalletTransactions.Add(walletTransaction);
                 _context.Transactions.Add(transaction);
+                
                 var success = await _context.SaveChangesAsync() > 0;
 
                 if (success) return Unit.Value;

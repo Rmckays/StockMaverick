@@ -15,6 +15,8 @@ namespace Persistence
         public DbSet<PortfolioStock> Stocks { get; set; }
         
         public DbSet<Transaction> Transactions { get; set; }
+        
+        public DbSet<WalletTransaction> WalletTransactions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

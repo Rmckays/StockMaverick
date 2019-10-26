@@ -17,6 +17,8 @@ namespace Application.User
         public class Command : IRequest
         {
             public float Deposit { get; set; }
+
+            public DateTime TransactionDate { get; set; }
         }
         
         public class CommandValidator : AbstractValidator<Command>
@@ -51,8 +53,19 @@ namespace Application.User
                     throw new RestException(HttpStatusCode.Unauthorized);
                 }
 
+                var walletTransaction = new WalletTransaction
+                {
+                    Id = new Guid(),
+                    Type = "Deposit",
+                    TransactionDate = request.TransactionDate,
+                    Amount = request.Deposit,
+                    AppUser = user
+                };
+
                 user.CashAmount = user.CashAmount + request.Deposit;
 
+                _context.WalletTransactions.Add(walletTransaction);
+                    
                 var success = await _context.SaveChangesAsync() > 0;
 
                 if (success) return Unit.Value;

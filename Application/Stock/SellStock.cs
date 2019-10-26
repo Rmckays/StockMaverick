@@ -94,6 +94,15 @@ namespace Application.Stock
                     _context.Stocks.Remove(stock);
                 }
                 
+                var walletTransaction = new WalletTransaction
+                {
+                    Id = new Guid(),
+                    Type = "Stock Sale",
+                    TransactionDate = request.PurchaseDate,
+                    Amount = transactionPrice,
+                    AppUser = user
+                };
+                
                 stock.Amount = stock.Amount - request.Amount;
                 user.CashAmount = user.CashAmount + transactionPrice;
                 
