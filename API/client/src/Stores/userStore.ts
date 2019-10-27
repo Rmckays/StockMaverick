@@ -1,15 +1,25 @@
-import {createContext} from "react";
-import {observable} from "mobx";
+import {action, computed, observable} from "mobx";
+import {IUser, IUserFormValues} from "../Models/user";
+import agent from "../API/agent";
+import {RootStore} from "./rootStore";
 
-class UserStore {
-    @observable username: string = '';
-    @observable userToken: string = '';
-    @observable userDisplayName: string = '';
-    @observable userPassword: string = '';
-    @observable userEmail: string = '';
-    @observable userAuthenticated = false;
-    @observable walletFunds = 0;
-    @observable depositAmount = 0;
+export default class UserStore {
+    rootStore: RootStore;
+
+    constructor(rootStore: RootStore){
+        this.rootStore = rootStore;
+    }
+
+    @observable user: IUser | null = null;
+
+    @computed get isLoggedIn() {return !! this.user}
+
+    @action login = async (values: IUserFormValues) => {
+        try{
+            const user = await agent.User.login(values);
+            this.user = user;
+        } catch(error) {
+            console.log(error);
+        }
+    }
 }
-
-export default createContext(new UserStore());
