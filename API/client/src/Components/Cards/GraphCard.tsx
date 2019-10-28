@@ -1,10 +1,20 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import {Chart} from "react-google-charts";
+import {observer} from "mobx-react-lite";
 
 import style from './Cards.module.css';
 import {Card} from "semantic-ui-react";
+import RootStoreContext from "../../Stores/rootStore";
 
 const GraphCard: React.FC = () => {
+    const rootStore = useContext(RootStoreContext);
+    const {loadStocks} = rootStore.stockStore;
+
+    useEffect(() => {
+            loadStocks();
+        },
+        [rootStore.stockStore]);
+
     return (
         <Card raised className={style.graphCard}>
             <Chart
@@ -31,4 +41,4 @@ const GraphCard: React.FC = () => {
     );
 };
 
-export default GraphCard;
+export default observer(GraphCard);
