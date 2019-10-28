@@ -25,7 +25,7 @@ const requests = {
 
 const Stocks = {
     getStocksByUser: (): Promise<IStock> => requests.getStocksByUser('/stock/user/stock'),
-    buy: (symbol: string, body : {}): Promise<IStock> => requests.buyStock(`/stock/buy/${symbol}`, body),
+    buy: (symbol: string, body : {}) => requests.buyStock(`/stock/buy/${symbol}`, body),
 };
 
 const User = {

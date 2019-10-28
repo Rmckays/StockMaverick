@@ -18,6 +18,9 @@ export default class StockStore {
     @observable stockQueryHistory: [] = [];
 
     @action loadStocks = () => {
-        agent.Stocks
-    }
+        agent.Stocks.getStocksByUser()
+            .then(stocks => {
+                    console.log(stocks);
+                });
+            };
 }
