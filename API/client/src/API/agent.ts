@@ -1,5 +1,6 @@
 import axios, {AxiosResponse} from 'axios';
 import {IUser, IUserFormValues} from "../Models/user";
+import {IStock} from "../Models/stockModel";
 
 axios.defaults.baseURL = '/api';
 
@@ -23,7 +24,8 @@ const requests = {
 };
 
 const Stocks = {
-
+    getStocksByUser: (): Promise<IStock> => requests.getStocksByUser('/stock/user/stock'),
+    buy: (symbol: string, body : {}): Promise<IStock> => requests.buyStock(`/stock/buy/${symbol}`, body),
 };
 
 const User = {

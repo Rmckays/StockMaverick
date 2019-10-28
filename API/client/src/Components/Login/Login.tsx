@@ -22,7 +22,7 @@ const Login: React.FC<IProps> = () => {
                             <label className={style.textWhite}>Last Name</label>
                             <input placeholder='Last Name' />
                         </Form.Field>
-                        <Button className={style.btnRed} type='submit'>Login</Button>
+                        <Button className={style.btnRed} onSubmit="" type='submit'>Login</Button>
                     </Form>
                 </Modal.Content>
             </div>
