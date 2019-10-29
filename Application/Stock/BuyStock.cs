@@ -43,6 +43,7 @@ namespace Application.Stock
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
                 var user = await _userManager.FindByNameAsync(_userAccessor.GetCurrentUserName());
+                var apiKey = Environment.GetEnvironmentVariable("API_KEY");
 
                 var portfolioStock = await _context.Stocks
                     .Where(s => s.Symbol == request.Symbol).Where(u => u.AppUser == user)
@@ -52,7 +53,7 @@ namespace Application.Stock
                 var restRequest = new RestRequest("/quote/latestprice", Method.GET);
                 restRequest.AddParameter("symbol", request.Symbol, ParameterType.UrlSegment);
                 restRequest.AddHeader("Content-Type", "application/json");
-                restRequest.AddQueryParameter("token", "Enter Your API Key Here");
+                restRequest.AddQueryParameter("token", apiKey);
                 restRequest.RequestFormat = DataFormat.Json;
                 var restResponse = await client.ExecuteTaskAsync(restRequest, CancellationToken.None);
 

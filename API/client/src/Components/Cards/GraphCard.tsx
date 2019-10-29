@@ -8,7 +8,13 @@ import RootStoreContext from "../../Stores/rootStore";
 
 const GraphCard: React.FC = () => {
     const rootStore = useContext(RootStoreContext);
-    const {loadStocks} = rootStore.stockStore;
+    const {loadStocks, stocks} = rootStore.stockStore;
+
+    let stocksData =  stocks.map(stock => {
+        return(
+            [stock.symbol, stock.amount]
+        )
+    });
 
     useEffect(() => {
             loadStocks();
@@ -22,13 +28,7 @@ const GraphCard: React.FC = () => {
                 chartType="PieChart"
                 loader={<div>Loading Chart</div>}
                 data={[
-                    ['Stocks', 'Stock Per Symbol'],
-                    ['AAPL', 50],
-                    ['GOOGL', 10],
-                    ['MSFT', 100],
-                    ['IBM', 15],
-                    ['TESL', 25],
-                    ['UBER', 34]
+                    stocksData
                 ]}
                 options={{
                     title: 'Current Stock Porfolio',

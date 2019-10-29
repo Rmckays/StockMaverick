@@ -21,12 +21,14 @@ namespace Application.Stock
 
             public async Task<Stock> Handle(Query request, CancellationToken cancellationToken)
             {
-
+                
+                var apiKey = Environment.GetEnvironmentVariable("API_KEY");
+                
                 var client = new RestClient("https://sandbox.iexapis.com/stable/stock/{symbol}");
                 var restRequest = new RestRequest("/quote/latestprice", Method.GET);
                 restRequest.AddParameter("symbol", request.Symbol, ParameterType.UrlSegment);
                 restRequest.AddHeader("Content-Type", "application/json");
-                restRequest.AddQueryParameter("token", "Enter Your API Key Here");
+                restRequest.AddQueryParameter("token", apiKey);
                 restRequest.RequestFormat = DataFormat.Json;
                 var restResponse = await client.ExecuteTaskAsync(restRequest, CancellationToken.None);
 
