@@ -10,10 +10,11 @@ const GraphCard: React.FC = () => {
     const rootStore = useContext(RootStoreContext);
     const {loadStocks, stocks} = rootStore.stockStore;
 
-    let stocksData =  stocks.map(stock => {
-        return(
-            [stock.symbol, stock.amount]
-        )
+    const graphData = [['Stocks', 'Stock Per Symbol']];
+
+    stocks.forEach(stock => {
+        const newStock: any = [stock.symbol, stock.amount];
+        graphData.push(newStock);
     });
 
     useEffect(() => {
@@ -21,15 +22,15 @@ const GraphCard: React.FC = () => {
         },
         [rootStore.stockStore]);
 
+    console.log(graphData);
+
     return (
         <Card raised className={style.graphCard}>
             <Chart
                 className={style.chart}
                 chartType="PieChart"
                 loader={<div>Loading Chart</div>}
-                data={[
-                    stocksData
-                ]}
+                data={graphData}
                 options={{
                     title: 'Current Stock Porfolio',
                     colors: [ '#8A0F0F', '#D4D4D4', '#CA3939', '#333', '#B81414', '#545454', '#9f9f9f', '#B30024', '#B30024']
