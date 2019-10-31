@@ -2,36 +2,24 @@ import axios, {AxiosResponse} from 'axios';
 import {IUser, IUserFormValues} from "../Models/user";
 import {IStock} from "../Models/stockModel";
 
-axios.defaults.baseURL = '/api';
+axios.defaults.baseURL = 'http://localhost:5000/api';
 
 const responseBody = (response: AxiosResponse) => response.data;
 
 const requests = {
-    loginUser: (url: string, body: {}) => axios.post(url).then(responseBody),
-    getUser: (url: string) => axios.get(url).then(responseBody),
-    createUser: (url: string, body: {}) => axios.post(url).then(responseBody),
-    addUserFunds: (url: string, body: {}) => axios.post(url).then(responseBody),
-
-    getStock: (url: string, body: {}) => axios.get(url).then(responseBody),
-    getStockHistory: (url: string, body: {}) => axios.get(url).then(responseBody),
-    buyStock: (url: string, body: {}) => axios.post(url).then(responseBody),
-    sellStock: (url: string, body: {}) => axios.post(url).then(responseBody),
-    getStocksByUser: (url: string) => axios.get(url).then(responseBody),
-
-    getWalletTransactions: (url: string) => axios.get(url).then(responseBody),
-    getStockTransactions: (url: string) => axios.get(url).then(responseBody),
-
+    post: (url: string, body: {}) => axios.post(url, body).then(responseBody),
+    get: (url: string) => axios.get(url).then(responseBody),
 };
 
 const Stocks = {
-    getStocksByUser: (): Promise<IStock> => requests.getStocksByUser('/stock/user/stock'),
-    buy: (symbol: string, body : {}) => requests.buyStock(`/stock/buy/${symbol}`, body),
+    getStocksByUser: (): Promise<IStock> => requests.get(`/stock/user/stock`),
+    buyStocks: (symbol: string, body : {}) => requests.post(`/stock/buy/${symbol}`, body),
 };
 
 const User = {
-    current: (): Promise<IUser> => requests.getUser('/user'),
-    login: (user: IUserFormValues): Promise<IUser> => requests.loginUser(`/user/login`, user),
-    register: (user: IUserFormValues): Promise<IUser> => requests.loginUser(`/user/register`, user),
+    current: (): Promise<IUser> => requests.get('/user'),
+    login: (user: IUserFormValues): Promise<IUser> => requests.post(`/user/login`, user),
+    register: (user: IUserFormValues): Promise<IUser> => requests.post(`/user/register`, user),
 };
 
 export default {

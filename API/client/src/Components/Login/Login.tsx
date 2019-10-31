@@ -4,6 +4,7 @@ import {Form as FinalForm, Field} from "react-final-form";
 
 import style from '../Components.module.css';
 import RootStoreContext from '../../Stores/rootStore';
+import {IUserFormValues} from "../../Models/user";
 
 interface IProps {
 
@@ -13,17 +14,13 @@ const Login: React.FC<IProps> = () => {
     const rootStore = useContext(RootStoreContext);
     const {login} = rootStore.userStore;
 
-    const handleOnSubmit = (values: any) => {
-        console.log(values);
-    };
-
     return (
         <Modal trigger={<Button className={style.btnRedModal}>Login</Button>} basic size='mini'>
             <div className={style.container}>
                 <Header className={style.headerText} icon='key' content='Login Please' />
                 <Modal.Content className={style.form}>
                     <FinalForm
-                        onSubmit={login}
+                        onSubmit={(values: IUserFormValues) => login(values)}
                         render={({handleSubmit}) => (
                             <Form onSubmit={handleSubmit}  className={style.form}>
                                 <Form.Field>
