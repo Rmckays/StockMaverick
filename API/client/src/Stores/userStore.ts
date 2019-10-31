@@ -20,13 +20,28 @@ export default class UserStore {
             const user = await agent.User.login(values);
             runInAction(() => {
                 this.user = user;
+                console.log(this.user);
             });
-            console.log(user);
             this.setToken(user.token);
-        } catch(error) {
+        }
+        catch(error) {
             console.log(error);
         }
     };
+
+    @action register = async(values: IUserFormValues) => {
+        try{
+            const user = await agent.User.register(values);
+            runInAction(() => {
+                this.user = user;
+                console.log(this.user);
+            });
+            this.setToken(user.token);
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
 
     @action setToken = (token: string | null) => {
         window.localStorage.setItem('jwt', token!);
