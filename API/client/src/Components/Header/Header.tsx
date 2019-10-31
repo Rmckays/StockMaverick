@@ -6,7 +6,8 @@ const Header= () => {
         <div
             id='header'
             className={style.header}>
-            <h1 className={style.textWhite}>StockMaverick</h1>
+            <div id={style.logo} />
+            <h1 className={style.logoText}><span className={style.redText}>Stock</span>Maverick</h1>
         </div>
     );
 };

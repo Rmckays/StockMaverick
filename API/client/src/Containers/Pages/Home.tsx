@@ -15,8 +15,8 @@ const Home = () => {
             <Header/>
             <Container className={style.homeShowcaseContainer}>
                 <h1 className={style.greeting}> Welcome to StockMaverick.</h1>
-                <h2 className={style.textCenter}> Your home for stocking trading and real time stock prices. If you aren't
-                    already a member sign up now and receive $100 on us to start your trading.</h2>
+                <h2 className={style.textCenter}> Your home for fantasy stock trading with real time stock prices. If you aren't
+                    already a member sign up now and receive $100 Fantasy Dollars on us to start your fantasy trading.</h2>
                 <div className={style.centerBtns}>
                     <Login />
                     <Register />

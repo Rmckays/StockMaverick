@@ -18,22 +18,6 @@
     padding: 1rem;
 }
 
-/*.bgDark {*/
-/*    background: #333;*/
-/*    border-radius: 0.25rem;*/
-/*    width: 100%;*/
-/*    padding: 1rem;*/
-/*    color: white;*/
-/*}*/
-
-/*.bgMid {*/
-/*    background: #999;*/
-/*    border-radius: 0.25rem;*/
-/*    width: 25%;*/
-/*    padding: 1rem;*/
-/*    color: white;*/
-/*}*/
-
 #backdrop {
     background: url("../Img/Pennies.jpg") center center/cover;
     position: fixed;
@@ -45,6 +29,23 @@
     width: 100vw;
     opacity: 0.6;
     z-index: -1;
+}
+
+#logo {
+    background: url("../Img/StockMaverickLogo.png") center center/cover;
+    width: 100px;
+    height: 50px;
+}
+
+.logoText {
+    color: white !important;
+    text-align: center;
+    margin: 0 !important;
+    font-size: 3.5rem !important;
+}
+
+.redText {
+    color: #ca312d !important;
 }
 
 .textWhite {
@@ -186,7 +187,7 @@
     right: 0;
     left: 0;
     background: #333;
-    padding: 2rem;
+    padding: 1rem;
 }
 
 .btnRedModal {
