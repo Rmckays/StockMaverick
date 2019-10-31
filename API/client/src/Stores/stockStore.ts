@@ -3,6 +3,7 @@ import {IStockTransaction} from "../Models/stockTransactionModel";
 import {IStock} from "../Models/stockModel";
 import {RootStore} from "./rootStore";
 import agent from "../API/agent";
+import {IWalletTransaction} from "../Models/walletTransactionModel";
 
 export default class StockStore {
     rootStore: RootStore;
@@ -12,6 +13,7 @@ export default class StockStore {
     }
 
     @observable stockTransactions: IStockTransaction[] = [];
+    @observable walletTransactions: IWalletTransaction[] = [];
     @observable stocks: IStock[] = [
         {
             id: 'asdfa12312',
@@ -60,4 +62,12 @@ export default class StockStore {
                     console.log(stocks);
                 });
             };
+
+    @action loadStockTransactions = () => {
+
+    };
+
+    @action loadWalletTransactions = () => {
+
+    };
 }

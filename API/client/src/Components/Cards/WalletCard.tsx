@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Table } from 'semantic-ui-react'
+import {observer} from "mobx-react-lite";
 
 import style from './Cards.module.css';
+import RootStoreContext from "../../Stores/rootStore";
 
-const WalletCard = () => {
+const WalletCard: React.FC = () => {
+    const rootStore = useContext(RootStoreContext);
+    const {loadWalletTransactions, walletTransactions} = rootStore.stockStore;
+
     return(
         <div className={style.walletCard} >
             <Table singleLine>
@@ -126,4 +131,4 @@ const WalletCard = () => {
     )
 };
 
-export default WalletCard;
+export default observer(WalletCard);

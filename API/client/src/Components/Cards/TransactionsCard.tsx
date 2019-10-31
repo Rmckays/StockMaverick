@@ -1,8 +1,14 @@
-import React from 'react';
-import style from "./Cards.module.css";
+import React, {useContext} from 'react';
 import {Table} from "semantic-ui-react";
+import {observer} from "mobx-react-lite";
 
-const TransactionCard = () => {
+import style from "./Cards.module.css";
+import RootStoreContext from "../../Stores/rootStore";
+
+const TransactionCard: React.FC = () => {
+    const rootStore = useContext(RootStoreContext);
+    const {loadStockTransactions, stockTransactions} = rootStore.stockStore;
+
     return(
         <div className={style.transactionCard} >
             <Table singleLine sortable={true} textAlign="center">
@@ -213,4 +219,4 @@ const TransactionCard = () => {
     )
 };
 
-export default TransactionCard;
+export default observer(TransactionCard);
