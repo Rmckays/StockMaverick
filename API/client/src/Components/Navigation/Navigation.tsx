@@ -1,13 +1,17 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import {Menu, Image, Button} from 'semantic-ui-react'
-import style from '../Components.module.css';
 import {NavLink} from "react-router-dom";
+
+import style from '../Components.module.css';
+import RootStoreContext from "../../Stores/rootStore";
 
 interface IProps {
 
 }
 
 const Navigation: React.FC<IProps> = () => {
+        const rootStore = useContext(RootStoreContext);
+        const {logout} = rootStore.userStore;
 
         return (
             <Menu vertical className={style.navigation}>
@@ -17,7 +21,7 @@ const Navigation: React.FC<IProps> = () => {
                 <NavLink className={style.navLinks} to='/wallet'> Wallet </NavLink>
                 <NavLink className={style.navLinks} to='/profile'> Profile </NavLink>
                 <NavLink className={style.navLinksBottom} to='/about'> About </NavLink>
-                <Button className={style.btnRed} >Logout</Button>
+                <Button className={style.btnRed} onClick={logout} >Logout</Button>
 
             </Menu>
         )
