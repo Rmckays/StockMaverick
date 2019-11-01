@@ -25,18 +25,19 @@ export default class UserStore {
             this.setToken(user.token);
         }
         catch(error) {
-            console.log(error);
+            throw error;
         }
     };
 
-    @action register = async(values: IUserFormValues) => {
+    @action register = async (values: IUserFormValues) => {
         try{
             const user = await agent.User.register(values);
             runInAction(() => {
                 this.user = user;
-                console.log(this.user);
+                console.log(user);
             });
             this.setToken(user.token);
+
         }
         catch(error){
             console.log(error);
