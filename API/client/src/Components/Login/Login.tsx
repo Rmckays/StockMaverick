@@ -6,10 +6,16 @@ import {FORM_ERROR} from 'final-form';
 import style from '../Components.module.css';
 import RootStoreContext from '../../Stores/rootStore';
 import {IUserFormValues} from "../../Models/user";
+import {combineValidators, isRequired} from 'revalidate';
 
 interface IProps {
 
 }
+
+const validate = combineValidators({
+    email: isRequired('email'),
+    password: isRequired('password')
+})
 
 const Login: React.FC<IProps> = () => {
     const rootStore = useContext(RootStoreContext);
@@ -24,7 +30,8 @@ const Login: React.FC<IProps> = () => {
                         onSubmit={(values: IUserFormValues) => login(values).catch(error => ({
                             [FORM_ERROR]: error
                         }))}
-                        render={({handleSubmit, submitError}) => (
+                        validate={validate}
+                        render={({handleSubmit, submitError, invalid, pristine, dirtySinceLastSubmit}) => (
                             <Form onSubmit={handleSubmit}  className={style.form}>
                                 <Form.Field>
                                     <label className={style.textWhite}>Email</label>
@@ -34,8 +41,8 @@ const Login: React.FC<IProps> = () => {
                                     <label className={style.textWhite}>Password</label>
                                     <Field name="password" placeholder='Password' type="password" component='input'/>
                                 </Form.Field>
-                                {submitError && <Label color='red' basic content={submitError.statusText} />}
-                                <Button className={style.btnRed} type='submit'>Login</Button>
+                                {submitError && !dirtySinceLastSubmit && <Label color='red' basic content={submitError.statusText} />}
+                                <Button disabled={invalid && !dirtySinceLastSubmit || pristine} className={style.btnRed} type='submit'>Login</Button>
                             </Form>
                         )}
                     />

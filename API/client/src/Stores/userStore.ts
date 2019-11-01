@@ -2,6 +2,7 @@ import {action, computed, observable, runInAction} from "mobx";
 import {IUser, IUserFormValues} from "../Models/user";
 import agent from "../API/agent";
 import {RootStore} from "./rootStore";
+import {history} from "../index";
 
 export default class UserStore {
     rootStore: RootStore;
@@ -23,6 +24,7 @@ export default class UserStore {
                 console.log(this.user);
             });
             this.setToken(user.token);
+            history.push(`/dashboard`);
         }
         catch(error) {
             throw error;
