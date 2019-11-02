@@ -1,16 +1,25 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import {Container} from "semantic-ui-react";
+import {observer} from "mobx-react-lite";
+import {Redirect} from 'react-router-dom';
 
 import style from '../Containers.module.css';
-import {Container} from "semantic-ui-react";
 import Login from "../../Components/Login/Login";
 import Backdrop from "../../Components/Backdrop/Backdrop";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer.";
 import Register from "../../Components/Register/Register";
+import RootStoreContext from "../../Stores/rootStore";
+
 
 const Home = () => {
+    const rootStore = useContext(RootStoreContext);
+    const {user} = rootStore.userStore;
+    const isLoggedIn = (user) ? <Redirect to="/dashboard" />: null;
+
     return(
         <>
+            {isLoggedIn}
             <Backdrop/>
             <Header/>
             <Container className={style.homeShowcaseContainer}>
@@ -27,4 +36,4 @@ const Home = () => {
     );
 };
 
-export default Home;
+export default observer(Home);

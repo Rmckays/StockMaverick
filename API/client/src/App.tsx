@@ -1,5 +1,5 @@
-import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import React, {useContext} from 'react';
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 
 import './App.css';
 
@@ -8,7 +8,9 @@ import Dashboard from "./Containers/Pages/Dashboard";
 import Portfolio from "./Containers/Pages/Portfolio";
 import Wallet from "./Containers/Pages/Wallet";
 
+
 const App: React.FC = () => {
+
   return (
 
           <BrowserRouter>

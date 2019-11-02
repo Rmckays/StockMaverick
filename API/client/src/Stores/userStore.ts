@@ -22,10 +22,8 @@ export default class UserStore {
             runInAction(() => {
                 this.user = user;
                 console.log(this.user);
+                this.setToken(user.token);
             });
-            this.setToken(user.token);
-            history.push(`/dashboard`);
-            history.go(0);
         }
         catch(error) {
             throw error;
@@ -38,10 +36,11 @@ export default class UserStore {
             runInAction(() => {
                 this.user = user;
                 console.log(user);
+                this.setToken(user.token);
             });
-            this.setToken(user.token);
-            history.push(`/dashboard`);
-            history.go(0);
+
+            // history.push(`/dashboard`);
+            // history.go(0);
         }
         catch(error){
             console.log(error);
