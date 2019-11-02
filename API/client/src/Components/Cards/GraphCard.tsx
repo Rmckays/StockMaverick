@@ -22,8 +22,6 @@ const GraphCard: React.FC = () => {
         },
         [rootStore.stockStore]);
 
-    console.log(graphData);
-
     return (
         <Card raised className={style.graphCard}>
             <Chart

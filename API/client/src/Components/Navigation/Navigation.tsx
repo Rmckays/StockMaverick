@@ -16,8 +16,8 @@ const Navigation: React.FC<IProps> = () => {
         return (
             <Menu vertical className={style.navigation}>
                 <Image className={style.profileImage} src='https://react.semantic-ui.com/images/wireframe/square-image.png' size='small' circular />
-                <NavLink className={style.navLinksTop} to='/dashboard'> Dashboard </NavLink>
-                <NavLink className={style.navLinks} to='/portfolio'> Portfolio </NavLink>
+                <Menu.Item as={NavLink} exact className={style.navLinks} to='/dashboard'> Dashboard </Menu.Item>
+                <Menu.Item as={NavLink} className={style.navLinks} to='/portfolio'> Portfolio </Menu.Item>
                 <NavLink className={style.navLinks} to='/wallet'> Wallet </NavLink>
                 <NavLink className={style.navLinks} to='/profile'> Profile </NavLink>
                 <NavLink className={style.navLinksBottom} to='/about'> About </NavLink>
