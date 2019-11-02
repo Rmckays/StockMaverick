@@ -1,4 +1,4 @@
-.active {
+a.active {
     background: white !important;
     color: #CA3939 !important;
     font-weight: 700 !important;
@@ -8,4 +8,9 @@
 .item {
     font-weight: 700 !important;
     font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif !important;
+}
+
+.item:hover {
+    background: rgba(202,57,57, 1) !important;
+    color: white !important;
 }

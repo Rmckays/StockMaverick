@@ -25,6 +25,7 @@ export default class UserStore {
             });
             this.setToken(user.token);
             history.push(`/dashboard`);
+            history.go(0);
         }
         catch(error) {
             throw error;
@@ -39,7 +40,8 @@ export default class UserStore {
                 console.log(user);
             });
             this.setToken(user.token);
-
+            history.push(`/dashboard`);
+            history.go(0);
         }
         catch(error){
             console.log(error);
@@ -54,6 +56,8 @@ export default class UserStore {
     @action logout = () => {
         this.setToken(null);
         this.user = null;
+        history.push('/');
+        history.go(0);
 
     }
 }

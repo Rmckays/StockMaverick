@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useState} from 'react';
 import {Form, Button, Modal, Header, Label} from "semantic-ui-react";
 import {Form as FinalForm, Field} from "react-final-form";
 import {FORM_ERROR} from 'final-form';
@@ -22,14 +22,12 @@ const Login: React.FC<IProps> = () => {
     const {login} = rootStore.userStore;
 
     return (
-        <Modal trigger={<Button className={style.btnRedModal}>Login</Button>} basic size='mini'>
+        <Modal trigger={<Button className={style.btnRedModal}>Login</Button>}  basic size='mini'>
             <div className={style.container}>
                 <Header className={style.headerText} icon='key' content='Login Please' />
                 <Modal.Content className={style.form}>
                     <FinalForm
-                        onSubmit={(values: IUserFormValues) => login(values).catch(error => ({
-                            [FORM_ERROR]: error
-                        }))}
+                        onSubmit={(values: IUserFormValues) => login(values).catch(error => ({[FORM_ERROR]: error}))}
                         validate={validate}
                         render={({handleSubmit, submitError, invalid, pristine, dirtySinceLastSubmit}) => (
                             <Form onSubmit={handleSubmit}  className={style.form}>
