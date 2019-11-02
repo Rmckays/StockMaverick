@@ -8,16 +8,12 @@ import RootStoreContext from '../../Stores/rootStore';
 import {IUserFormValues} from "../../Models/user";
 import {combineValidators, isRequired} from 'revalidate';
 
-interface IProps {
-
-}
-
 const validate = combineValidators({
     email: isRequired('email'),
     password: isRequired('password')
 })
 
-const Login: React.FC<IProps> = () => {
+const Login: React.FC = () => {
     const rootStore = useContext(RootStoreContext);
     const {login} = rootStore.userStore;
 

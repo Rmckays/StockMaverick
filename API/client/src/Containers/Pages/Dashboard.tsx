@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import {Grid} from "semantic-ui-react";
 
 import Navigation from "../../Components/Navigation/Navigation";
@@ -10,10 +10,18 @@ import Showcase from "../Showcase";
 import GraphCard from "../../Components/Cards/GraphCard";
 import TransactionCard from "../../Components/Cards/TransactionsCard";
 import WalletCard from "../../Components/Cards/WalletCard";
+import {Redirect} from "react-router";
+import RootStoreContext from "../../Stores/rootStore";
 
 const Dashboard = () => {
+    const rootStore = useContext(RootStoreContext);
+    const {user} = rootStore.userStore;
+
+    const isLoggedOut = (!user) ? <Redirect to="/" />: null;
+
     return(
         <>
+            {isLoggedOut}
             <Backdrop/>
             <Header />
             <Grid className={style.showcaseContainer}>
