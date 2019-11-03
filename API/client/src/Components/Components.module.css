@@ -33,11 +33,14 @@
 
 #logo {
     background: url("../Img/StockMaverickLogo.png") center center/cover;
-    width: 100px;
-    height: 50px;
+    width: 150px;
+    height: 75px;
+    margin-right: 0.75rem;
 }
 
 .logoText {
+    font-family: Ubuntu, sans-serif;
+    font-weight: 300;
     color: white !important;
     text-align: center;
     margin: 0 !important;
@@ -56,6 +59,12 @@
     color: white !important;
     display: block;
     padding: 0.5rem;
+}
+
+i:not(.headerText){
+    color: white !important;
+    margin-bottom: 0 !important;
+    font-size: 1.5rem !important;
 }
 
 .headerText {
@@ -87,6 +96,7 @@
     background-color: #54a86a !important;
     color: black !important;
     width: 30%;
+    font-size: 1.5rem;
     height: 100%;
 }
 
@@ -133,57 +143,6 @@
     justify-self: center;
 }
 
-.navLinks {
-    display: block;
-    text-align: left;
-    padding: 0.5rem 2rem;
-    border-bottom: 1px solid lightgray;
-    color: black;
-    font-weight: 700;
-    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    font-kerning: auto;
-}
-
-.navLinks:Hover {
-    color: #CA3939;
-}
-
-.navLinks:Active {
-    background: white;
-    color: #CA3939 !important;
-}
-
-.navLinksTop {
-    display: block;
-    text-align: left;
-    padding: 0.5rem 2rem;
-    border-top: 1px solid lightgray;
-    border-bottom: 1px solid lightgray;
-    color: black;
-    font-weight: 700;
-    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    font-kerning: auto;
-}
-
-.navLinksTop:Hover {
-    color: #CA3939;
-}
-
-.navLinksBottom {
-    display: block;
-    text-align: left;
-    padding: 0.5rem 2rem;
-    border-bottom: 1px solid lightgray;
-    color: black;
-    font-weight: 700;
-    font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
-    font-kerning: auto;
-}
-
-.navLinksBottom:Hover {
-    color: #CA3939;
-}
-
 .header{
     display: flex;
     justify-content: start;
@@ -200,13 +159,27 @@
 .btnRedModal {
     background-color: #CA3939 !important;
     color: black !important;
+    font-size: 1.5rem !important;
+    height: 4rem;
     margin: 1rem !important;
+}
+
+.btnRedModal:hover {
+    background-color: #c4c4c4 !important;
+    color: black !important;
 }
 
 .btnDarkModal {
     background-color: #333 !important;
     color: white !important;
+    font-size: 1.5rem !important;
+    height: 4rem;
     margin: 1rem !important;
+}
+
+.btnDarkModal:hover {
+    background-color: #c4c4c4 !important;
+    color: black !important;
 }
 
 .btnRedModalSearch {
