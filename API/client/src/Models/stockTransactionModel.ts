@@ -2,9 +2,9 @@ export interface IStockTransaction {
     id: string;
     symbol: string;
     companyName: string;
-    purchaseDate: Date;
+    transactionDate: Date;
     purchasePrice: number;
-    price: number;
+    transactionPrice: number;
     yearHigh: number;
-    amount: number;
+    transactionAmount: number;
 }

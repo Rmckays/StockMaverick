@@ -7,7 +7,7 @@ import RootStoreContext from "../../Stores/rootStore";
 
 const WalletCard: React.FC = () => {
     const rootStore = useContext(RootStoreContext);
-    const {loadWalletTransactions, walletTransactions} = rootStore.stockStore;
+    const {loadWalletTransactions, walletTransactions} = rootStore.transactionStore;
 
     return(
         <div className={style.walletCard} >

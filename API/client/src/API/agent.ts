@@ -1,6 +1,8 @@
 import axios, {AxiosResponse} from 'axios';
 import {IUser, IUserFormValues} from "../Models/user";
 import {IStock} from "../Models/stockModel";
+import {IStockTransaction} from "../Models/stockTransactionModel";
+import {IWalletTransaction} from "../Models/walletTransactionModel";
 
 axios.defaults.baseURL = 'http://localhost:5000/api';
 
@@ -24,6 +26,11 @@ const Stocks = {
     buyStocks: (symbol: string, body : {}) => requests.post(`/stock/buy/${symbol}`, body),
 };
 
+const Transactions = {
+    getStockTransactions: (): Promise<IStockTransaction[]> => requests.get('/transactions/stocks'),
+    getWalletTransactions: (): Promise<IWalletTransaction[]> => requests.get('/transactions/wallet')
+}
+
 const User = {
     current: (): Promise<IUser> => requests.get('/user'),
     login: (user: IUserFormValues): Promise<IUser> => requests.post(`/user/login`, user),
@@ -32,5 +39,6 @@ const User = {
 
 export default {
     Stocks,
-    User
+    User,
+    Transactions
 };

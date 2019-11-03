@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import {Table} from "semantic-ui-react";
 import {observer} from "mobx-react-lite";
 
@@ -7,7 +7,27 @@ import RootStoreContext from "../../Stores/rootStore";
 
 const TransactionCard: React.FC = () => {
     const rootStore = useContext(RootStoreContext);
-    const {loadStockTransactions, stockTransactions} = rootStore.stockStore;
+    const {loadStockTransactions, stockTransactions} = rootStore.transactionStore;
+
+    const mappedStockTransactions = stockTransactions.map(stockTransaction => {
+
+        return (
+            <Table.Row>
+                <Table.Cell>{stockTransaction.transactionDate}</Table.Cell>
+                <Table.Cell>Buy</Table.Cell>
+                <Table.Cell>{stockTransaction.symbol}</Table.Cell>
+                <Table.Cell>{stockTransaction.companyName}</Table.Cell>
+                <Table.Cell>{stockTransaction.transactionPrice}</Table.Cell>
+                <Table.Cell>{stockTransaction.purchasePrice}</Table.Cell>
+                <Table.Cell>{stockTransaction.transactionAmount}</Table.Cell>
+            </Table.Row>
+        )
+    });
+
+    useEffect(() => {
+            loadStockTransactions();
+        },
+        [rootStore.transactionStore]);
 
     return(
         <div className={style.transactionCard} >
@@ -24,195 +44,7 @@ const TransactionCard: React.FC = () => {
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                    <Table.Row>
-                        <Table.Cell>October 15, 2019</Table.Cell>
-                        <Table.Cell>Buy</Table.Cell>
-                        <Table.Cell>AAPL</Table.Cell>
-                        <Table.Cell>Apple Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$312.67</Table.Cell>
-                        <Table.Cell>10</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 19, 2019</Table.Cell>
-                        <Table.Cell>Buy</Table.Cell>
-                        <Table.Cell>AAPL</Table.Cell>
-                        <Table.Cell>Apple Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$312.67</Table.Cell>
-                        <Table.Cell>10</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Sell</Table.Cell>
-                        <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>Alphabet Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$1053.29</Table.Cell>
-                        <Table.Cell>5</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Sell</Table.Cell>
-                        <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>Alphabet Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$1053.29</Table.Cell>
-                        <Table.Cell>5</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Sell</Table.Cell>
-                        <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>Alphabet Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$1053.29</Table.Cell>
-                        <Table.Cell>5</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Sell</Table.Cell>
-                        <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>Alphabet Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$1053.29</Table.Cell>
-                        <Table.Cell>5</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Sell</Table.Cell>
-                        <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>Alphabet Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$1053.29</Table.Cell>
-                        <Table.Cell>5</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 15, 2019</Table.Cell>
-                        <Table.Cell>Buy</Table.Cell>
-                        <Table.Cell>AAPL</Table.Cell>
-                        <Table.Cell>Apple Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$312.67</Table.Cell>
-                        <Table.Cell>10</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 19, 2019</Table.Cell>
-                        <Table.Cell>Buy</Table.Cell>
-                        <Table.Cell>AAPL</Table.Cell>
-                        <Table.Cell>Apple Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$312.67</Table.Cell>
-                        <Table.Cell>10</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Sell</Table.Cell>
-                        <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>Alphabet Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$1053.29</Table.Cell>
-                        <Table.Cell>5</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Sell</Table.Cell>
-                        <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>Alphabet Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$1053.29</Table.Cell>
-                        <Table.Cell>5</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Sell</Table.Cell>
-                        <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>Alphabet Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$1053.29</Table.Cell>
-                        <Table.Cell>5</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Sell</Table.Cell>
-                        <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>Alphabet Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$1053.29</Table.Cell>
-                        <Table.Cell>5</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Sell</Table.Cell>
-                        <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>Alphabet Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$1053.29</Table.Cell>
-                        <Table.Cell>5</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 15, 2019</Table.Cell>
-                        <Table.Cell>Buy</Table.Cell>
-                        <Table.Cell>AAPL</Table.Cell>
-                        <Table.Cell>Apple Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$312.67</Table.Cell>
-                        <Table.Cell>10</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 19, 2019</Table.Cell>
-                        <Table.Cell>Buy</Table.Cell>
-                        <Table.Cell>AAPL</Table.Cell>
-                        <Table.Cell>Apple Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$312.67</Table.Cell>
-                        <Table.Cell>10</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Sell</Table.Cell>
-                        <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>Alphabet Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$1053.29</Table.Cell>
-                        <Table.Cell>5</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Sell</Table.Cell>
-                        <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>Alphabet Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$1053.29</Table.Cell>
-                        <Table.Cell>5</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Sell</Table.Cell>
-                        <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>Alphabet Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$1053.29</Table.Cell>
-                        <Table.Cell>5</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Sell</Table.Cell>
-                        <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>Alphabet Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$1053.29</Table.Cell>
-                        <Table.Cell>5</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Sell</Table.Cell>
-                        <Table.Cell>GOOGL</Table.Cell>
-                        <Table.Cell>Alphabet Inc.</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                        <Table.Cell>$1053.29</Table.Cell>
-                        <Table.Cell>5</Table.Cell>
-                    </Table.Row>
+                    {mappedStockTransactions}
                 </Table.Body>
             </Table>
         </div>

@@ -12,8 +12,6 @@ export default class StockStore {
         this.rootStore = rootStore;
     }
 
-    @observable stockTransactions: IStockTransaction[] = [];
-    @observable walletTransactions: IWalletTransaction[] = [];
     @observable stocks: IStock[] = [
 
         ];
@@ -38,16 +36,7 @@ export default class StockStore {
                 });
                 runInAction(() => {
                     this.stocks = retrievedStocks;
-                    }
-                );
                 });
-            };
-
-    @action loadStockTransactions = () => {
-
-    };
-
-    @action loadWalletTransactions = () => {
-
+            });
     };
 }
