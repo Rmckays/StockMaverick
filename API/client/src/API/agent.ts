@@ -4,6 +4,14 @@ import {IStock} from "../Models/stockModel";
 
 axios.defaults.baseURL = 'http://localhost:5000/api';
 
+axios.interceptors.request.use((config) => {
+    const token = window.localStorage.getItem('jwt');
+    if (token) config.headers.Authorization = `Bearer ${token}`;
+    return config;
+}, error => {
+    return Promise.reject(error);
+});
+
 const responseBody = (response: AxiosResponse) => response.data;
 
 const requests = {
@@ -12,7 +20,7 @@ const requests = {
 };
 
 const Stocks = {
-    getStocksByUser: (): Promise<IStock> => requests.get(`/stock/user/stock`),
+    getStocksByUser: (): Promise<IStock[]> => requests.get(`/stock/user/stocks`),
     buyStocks: (symbol: string, body : {}) => requests.post(`/stock/buy/${symbol}`, body),
 };
 

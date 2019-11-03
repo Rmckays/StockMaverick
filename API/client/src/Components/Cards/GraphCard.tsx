@@ -13,7 +13,7 @@ const GraphCard: React.FC = () => {
     const graphData = [['Stocks', 'Stock Per Symbol']];
 
     stocks.forEach(stock => {
-        const newStock: any = [stock.symbol, stock.amount];
+        const newStock: any = [stock.companyName, stock.amount];
         graphData.push(newStock);
     });
 
