@@ -9,10 +9,12 @@ const BalanceCard = () => {
     const rootStore = useContext(RootStoreContext);
     const {user} = rootStore.userStore;
 
+    const cash = (user) ? user.cashAmount.toFixed(2) : '0';
+
     return(
         <div className={style.balanceCard}>
             <h2>Account Balance</h2>
-            <h3>${user!.cashAmount}</h3>
+            <h3>${cash}</h3>
             <div className={style.balanceActions}>
                 <label>Enter the Amount to Deposit or Withdraw</label>
                 <Input className={style.balanceInput} placeholder="Enter Amount"/>

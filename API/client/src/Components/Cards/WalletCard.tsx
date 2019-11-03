@@ -11,9 +11,11 @@ const WalletCard: React.FC = () => {
 
     const mappedWalletTransactions = walletTransactions.map(walletTransaction => {
 
+        const date = new Date(walletTransaction.transactionDate);
+
         return (
             <Table.Row>
-                <Table.Cell>{walletTransaction.transactionDate}</Table.Cell>
+                <Table.Cell>{date.toDateString()}</Table.Cell>
                 <Table.Cell>{walletTransaction.type}</Table.Cell>
                 <Table.Cell>{walletTransaction.amount}</Table.Cell>
             </Table.Row>

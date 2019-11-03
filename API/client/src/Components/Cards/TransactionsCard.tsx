@@ -11,13 +11,15 @@ const TransactionCard: React.FC = () => {
 
     const mappedStockTransactions = stockTransactions.map(stockTransaction => {
 
+        const date = new Date(stockTransaction.transactionDate);
+
         return (
             <Table.Row>
-                <Table.Cell>{stockTransaction.transactionDate}</Table.Cell>
+                <Table.Cell>{date.toDateString()}</Table.Cell>
                 <Table.Cell>{stockTransaction.type}</Table.Cell>
                 <Table.Cell>{stockTransaction.symbol}</Table.Cell>
                 <Table.Cell>{stockTransaction.companyName}</Table.Cell>
-                <Table.Cell>{stockTransaction.transactionPrice}</Table.Cell>
+                <Table.Cell>{stockTransaction.transactionPrice.toFixed(2)}</Table.Cell>
                 <Table.Cell>{stockTransaction.purchasePrice}</Table.Cell>
                 <Table.Cell>{stockTransaction.transactionAmount}</Table.Cell>
             </Table.Row>
