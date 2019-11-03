@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useEffect} from 'react';
 import { Table } from 'semantic-ui-react'
 import {observer} from "mobx-react-lite";
 
@@ -8,6 +8,22 @@ import RootStoreContext from "../../Stores/rootStore";
 const WalletCard: React.FC = () => {
     const rootStore = useContext(RootStoreContext);
     const {loadWalletTransactions, walletTransactions} = rootStore.transactionStore;
+
+    const mappedWalletTransactions = walletTransactions.map(walletTransaction => {
+
+        return (
+            <Table.Row>
+                <Table.Cell>{walletTransaction.transactionDate}</Table.Cell>
+                <Table.Cell>{walletTransaction.type}</Table.Cell>
+                <Table.Cell>{walletTransaction.amount}</Table.Cell>
+            </Table.Row>
+        )
+    });
+
+    useEffect(() => {
+            loadWalletTransactions();
+        },
+        [rootStore.transactionStore]);
 
     return(
         <div className={style.walletCard} >
@@ -20,111 +36,7 @@ const WalletCard: React.FC = () => {
                     </Table.Row>
                 </Table.Header>
                 <Table.Body>
-                    <Table.Row>
-                        <Table.Cell>October 15, 2019</Table.Cell>
-                        <Table.Cell>Deposit</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 19, 2019</Table.Cell>
-                        <Table.Cell>Stock Sale</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Stock Purchase</Table.Cell>
-                        <Table.Cell>-$5250.00</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 19, 2019</Table.Cell>
-                        <Table.Cell>Stock Sale</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 19, 2019</Table.Cell>
-                        <Table.Cell>Stock Sale</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 19, 2019</Table.Cell>
-                        <Table.Cell>Stock Sale</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 19, 2019</Table.Cell>
-                        <Table.Cell>Stock Sale</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 19, 2019</Table.Cell>
-                        <Table.Cell>Stock Sale</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Stock Purchase</Table.Cell>
-                        <Table.Cell>-$5250.00</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Stock Purchase</Table.Cell>
-                        <Table.Cell>-$5250.00</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 15, 2019</Table.Cell>
-                        <Table.Cell>Withdrawal</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 15, 2019</Table.Cell>
-                        <Table.Cell>Withdrawal</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 15, 2019</Table.Cell>
-                        <Table.Cell>Withdrawal</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Stock Purchase</Table.Cell>
-                        <Table.Cell>-$5250.00</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Stock Purchase</Table.Cell>
-                        <Table.Cell>-$5250.00</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 19, 2019</Table.Cell>
-                        <Table.Cell>Stock Sale</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 19, 2019</Table.Cell>
-                        <Table.Cell>Stock Sale</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 19, 2019</Table.Cell>
-                        <Table.Cell>Stock Sale</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 19, 2019</Table.Cell>
-                        <Table.Cell>Stock Sale</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 19, 2019</Table.Cell>
-                        <Table.Cell>Stock Sale</Table.Cell>
-                        <Table.Cell>$3126.70</Table.Cell>
-                    </Table.Row>
-                    <Table.Row>
-                        <Table.Cell>October 11, 2019</Table.Cell>
-                        <Table.Cell>Stock Purchase</Table.Cell>
-                        <Table.Cell>-$5250.00</Table.Cell>
-                    </Table.Row>
+                    {mappedWalletTransactions}
                 </Table.Body>
             </Table>
         </div>

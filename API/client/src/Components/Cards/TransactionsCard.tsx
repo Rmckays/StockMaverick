@@ -14,7 +14,7 @@ const TransactionCard: React.FC = () => {
         return (
             <Table.Row>
                 <Table.Cell>{stockTransaction.transactionDate}</Table.Cell>
-                <Table.Cell>Buy</Table.Cell>
+                <Table.Cell>{stockTransaction.type}</Table.Cell>
                 <Table.Cell>{stockTransaction.symbol}</Table.Cell>
                 <Table.Cell>{stockTransaction.companyName}</Table.Cell>
                 <Table.Cell>{stockTransaction.transactionPrice}</Table.Cell>

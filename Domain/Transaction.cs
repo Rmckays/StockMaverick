@@ -12,6 +12,8 @@ namespace Domain
         
         [Required]
         public string CompanyName { get; set; }
+        
+        public string Type { get; set; }
 
         public DateTime TransactionDate { get; set; }
         

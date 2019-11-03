@@ -99,6 +99,7 @@ namespace Application.Stock
                     TransactionAmount = request.Amount,
                     PurchasePrice = api.latestPrice,
                     AppUser = user,
+                    Type = "Purchase",
                     Symbol = request.Symbol,
                     TransactionPrice = transactionPrice,
                     Id = new Guid(),

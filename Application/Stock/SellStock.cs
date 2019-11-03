@@ -84,6 +84,7 @@ namespace Application.Stock
                     TransactionAmount = request.Amount,
                     SellPrice = api.latestPrice,
                     AppUser = user,
+                    Type = "Sale",
                     Symbol = stock.Symbol,
                     TransactionPrice = transactionPrice,
                     Id = new Guid(),

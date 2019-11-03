@@ -13,6 +13,7 @@ export default class UserStore {
 
     @observable user: IUser | null = null;
     @observable token: string | null = null;
+    @observable cash: string | null = null;
 
     @computed get isLoggedIn() {return !! this.user}
 
@@ -45,12 +46,24 @@ export default class UserStore {
         catch(error){
             console.log(error);
         }
-    }
+    };
 
     @action setToken = (token: string | null) => {
         window.localStorage.setItem('jwt', token!);
         this.token = token;
-    }
+    };
+
+    @action setCash = () => {
+
+    };
+
+    @action deposit = () => {
+
+    };
+
+    @action withdraw = () => {
+
+    };
 
     @action logout = () => {
         this.setToken(null);
@@ -58,5 +71,5 @@ export default class UserStore {
         history.push('/');
         history.go(0);
 
-    }
+    };
 }

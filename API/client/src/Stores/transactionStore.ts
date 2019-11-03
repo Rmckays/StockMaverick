@@ -22,6 +22,7 @@ export default class TransactionStore {
                     const newStockTransaction: IStockTransaction = {
                         id: transanction.id,
                         symbol: transanction.symbol,
+                        type: transanction.type,
                         companyName: transanction.companyName,
                         transactionDate: transanction.transactionDate,
                         purchasePrice: transanction.purchasePrice,
@@ -38,6 +39,21 @@ export default class TransactionStore {
     };
 
     @action loadWalletTransactions = () => {
-
+        agent.Transactions.getWalletTransactions()
+            .then(walletTransactions => {
+                console.log(walletTransactions);
+                const retrievedWalletTransactions = walletTransactions.map(walletTransaction => {
+                    const newWalletTransaction: IWalletTransaction = {
+                        id: walletTransaction.id,
+                        type: walletTransaction.type,
+                        amount: walletTransaction.amount,
+                        transactionDate: walletTransaction.transactionDate
+                    };
+                    return newWalletTransaction;
+                });
+                runInAction(() => {
+                    this.walletTransactions = retrievedWalletTransactions;
+                });
+            })
     };
 }
