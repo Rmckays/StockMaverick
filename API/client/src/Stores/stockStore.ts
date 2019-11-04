@@ -1,9 +1,8 @@
 import {action, observable, runInAction} from "mobx";
-import {IStockTransaction} from "../Models/stockTransactionModel";
 import {IStock} from "../Models/stockModel";
 import {RootStore} from "./rootStore";
 import agent from "../API/agent";
-import {IWalletTransaction} from "../Models/walletTransactionModel";
+import {IStockHistory} from "../Models/stockHistory";
 
 export default class StockStore {
     rootStore: RootStore;
@@ -12,12 +11,11 @@ export default class StockStore {
         this.rootStore = rootStore;
     }
 
-    @observable stocks: IStock[] = [
-
-        ];
+    @observable stocks: IStock[] = [];
     @observable stockSearchSymbol: string = '';
     @observable stockQuery: string = '';
-    @observable stockQueryHistory: [] = [];
+    @observable stockQueryHistory: IStockHistory[] = [];
+    @observable loadingHistory = true;
 
     @action loadStocks = () => {
         agent.Stocks.getStocksByUser()
@@ -39,4 +37,40 @@ export default class StockStore {
                 });
             });
     };
+
+    @action loadStockHistory = async () => {
+        await agent.Stocks.getStockHistory(this.stockQuery)
+            .then(stockHistory => {
+                const retrievedStockHist = stockHistory.map(stockHistory => {
+                    const newStockHist: IStockHistory = {
+                        date: stockHistory.date,
+                        closePrice: stockHistory.closePrice,
+                        volume: stockHistory.volume,
+                        change: stockHistory.change
+                    };
+                    return newStockHist;
+                });
+                runInAction(() => {
+                    this.stockQueryHistory = retrievedStockHist;
+                    console.log("Stock Query Hist", this.stockQueryHistory)
+                    this.loadingHistory = false;
+                })
+            })
+    }
+
+    @action loadQuerySymbol = (value: any) => {
+        runInAction(() => {
+            console.log(value);
+            this.stockQuery = value;
+        })
+    }
+
+    @action closeQuery = () => {
+        runInAction(() => {
+                this.stockQueryHistory = [];
+                this.loadingHistory = true;
+            }
+        );
+
+    }
 }

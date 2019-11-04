@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext} from 'react';
 import {Form, Button, Modal, Header, Label} from "semantic-ui-react";
 import {Form as FinalForm, Field} from "react-final-form";
 import {FORM_ERROR} from 'final-form';

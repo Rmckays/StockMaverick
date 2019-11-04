@@ -3,6 +3,7 @@ import {IUser, IUserFormValues} from "../Models/user";
 import {IStock} from "../Models/stockModel";
 import {IStockTransaction} from "../Models/stockTransactionModel";
 import {IWalletTransaction} from "../Models/walletTransactionModel";
+import {IStockHistory} from "../Models/stockHistory";
 
 axios.defaults.baseURL = 'http://localhost:5000/api';
 
@@ -22,6 +23,7 @@ const requests = {
 };
 
 const Stocks = {
+    getStockHistory: (value: string): Promise<IStockHistory[]> => requests.get(`/stock/history/${value}`),
     getStocksByUser: (): Promise<IStock[]> => requests.get(`/stock/user/stocks`),
     buyStocks: (symbol: string, body : {}) => requests.post(`/stock/buy/${symbol}`, body),
 };

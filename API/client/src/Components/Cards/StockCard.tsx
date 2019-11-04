@@ -1,17 +1,27 @@
 import React, {useContext, useEffect} from "react";
+import {Form as FinalForm, Field} from "react-final-form";
 import {Form} from "semantic-ui-react";
-import style from './Cards.module.css';
-import StockSearch from "../StockSearch/StockSearch";
 import {observer} from "mobx-react-lite";
 
-const StockCard = () => {
+import style from './Cards.module.css';
+import StockSearch from "../StockSearch/StockSearch";
+import RootStoreContext from "../../Stores/rootStore";
+
+const StockCard: React.FC = () => {
+  const rootStore = useContext(RootStoreContext);
+  const {loadStockHistory, loadQuerySymbol} = rootStore.stockStore;
+
+  const handleChange = (event: any) => {
+      const value = event.target.value;
+      loadQuerySymbol(value);
+  };
 
   return (
       <div className={style.stockCard}>
-          <Form className={style.form}>
+          <Form onSubmit={loadStockHistory} className={style.form}>
               <Form.Field>
                   <label >Stock Symbol</label>
-                  <input placeholder='Stock Symbol' />
+                  <input onChange={handleChange} name="symbol" placeholder='Stock Symbol' />
               </Form.Field>
               <StockSearch />
           </Form>

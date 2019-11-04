@@ -17,7 +17,6 @@ export default class TransactionStore {
     @action loadStockTransactions = () => {
         agent.Transactions.getStockTransactions()
             .then(transactions => {
-                console.log(transactions);
                 const retrievedStockTransactions = transactions.map(transanction => {
                     const newStockTransaction: IStockTransaction = {
                         id: transanction.id,
@@ -41,7 +40,6 @@ export default class TransactionStore {
     @action loadWalletTransactions = () => {
         agent.Transactions.getWalletTransactions()
             .then(walletTransactions => {
-                console.log(walletTransactions);
                 const retrievedWalletTransactions = walletTransactions.map(walletTransaction => {
                     const newWalletTransaction: IWalletTransaction = {
                         id: walletTransaction.id,
