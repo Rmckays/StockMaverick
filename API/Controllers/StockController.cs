@@ -43,10 +43,10 @@ namespace API.Controllers
             return await Mediator.Send(new GetStocksByUser.Query());
         }
 
-        [HttpPost("sell/{id}")]
-        public async Task<ActionResult<Unit>> SellStock(Guid id, SellStock.Command command)
+        [HttpPost("sell/{symbol}")]
+        public async Task<ActionResult<Unit>> SellStock(string symbol, SellStock.Command command)
         {
-            command.Id = id;
+            command.Symbol = symbol;
             return await Mediator.Send(command);
         }
     }

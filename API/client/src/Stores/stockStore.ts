@@ -70,7 +70,7 @@ export default class StockStore {
         runInAction(() => {
             this.stockAmount = value;
         })
-    }
+    };
 
     @action closeQuery = () => {
         runInAction(() => {
@@ -78,6 +78,11 @@ export default class StockStore {
                 this.loadingHistory = true;
             }
         );
+    };
 
+    @action sellStocks = async () => {
+        await agent.Stocks.sellStocks(this.stockSearchSymbol, this.stockAmount)
+            .then(() => console.log("Stock Sale Was Successful"))
+            .catch(error => {console.log(error)})
     }
 }

@@ -17,13 +17,13 @@ namespace Application.Stock
     {
         public class Command : IRequest
         {
-            public Guid Id { get; set; }
+//            public Guid Id { get; set; }
             
             public int Amount { get; set; }
             
             public string Symbol { get; set; }
             
-            public DateTime PurchaseDate { get; set; }
+//            public DateTime PurchaseDate { get; set; }
         }
 
         public class Handler : IRequestHandler<Command>
@@ -75,12 +75,12 @@ namespace Application.Stock
                 dynamic api = JObject.Parse(restResponse.Content);
                 
                 var currentPrice = api.latestPrice;
-                
+
                 var transactionPrice = (float) currentPrice * request.Amount ;
                 
                 var transaction = new Transaction
                 {
-                    TransactionDate = request.PurchaseDate,
+                    TransactionDate = DateTime.Now,
                     TransactionAmount = request.Amount,
                     SellPrice = api.latestPrice,
                     AppUser = user,
@@ -100,7 +100,7 @@ namespace Application.Stock
                 {
                     Id = new Guid(),
                     Type = "Stock Sale",
-                    TransactionDate = request.PurchaseDate,
+                    TransactionDate = DateTime.Now,
                     Amount = transactionPrice,
                     AppUser = user
                 };
