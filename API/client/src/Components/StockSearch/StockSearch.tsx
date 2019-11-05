@@ -8,7 +8,7 @@ import RootStoreContext from "../../Stores/rootStore";
 
 const StockSearch: React.FC = () => {
     const rootStore = useContext(RootStoreContext);
-    const {stockQueryHistory, stockQuery, loadingHistory, closeQuery} = rootStore.stockStore;
+    const {stockQueryHistory, stockQuery, loadingHistory, closeQuery, loadStockAmount} = rootStore.stockStore;
 
     const graphDataHist = [[{type: 'date', label: 'Day'}, '$USD']];
 
@@ -27,6 +27,11 @@ const StockSearch: React.FC = () => {
         }}
         rootProps={{ 'data-testid': '1' }}
     />);
+
+    const handleChange = (event: any) => {
+        const value = event.target.value;
+        loadStockAmount(value);
+    };
 
     useEffect(() => {
         stockQueryHistory.forEach(stock => {
@@ -47,7 +52,7 @@ const StockSearch: React.FC = () => {
                         {displayGraph}
                         <label className={style.stockLabel}>Number of Stock</label>
                         <div className={style.stockBtns}>
-                            <Input className={style.stockModalInput} placeholder='Number of Stock' />
+                            <Input onChange={handleChange} className={style.stockModalInput} placeholder='Number of Stock' />
                             <Button className={style.btnGreenStockModal}>Buy</Button>
                             <Button className={style.btnRedStockModal}>Sell</Button>
                         </div>

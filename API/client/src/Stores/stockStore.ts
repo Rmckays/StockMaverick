@@ -12,6 +12,7 @@ export default class StockStore {
     }
 
     @observable stocks: IStock[] = [];
+    @observable stockAmount: number = 0;
     @observable stockSearchSymbol: string = '';
     @observable stockQuery: string = '';
     @observable stockQueryHistory: IStockHistory[] = [];
@@ -56,12 +57,18 @@ export default class StockStore {
                     this.loadingHistory = false;
                 })
             })
-    }
+    };
 
     @action loadQuerySymbol = (value: any) => {
         runInAction(() => {
             console.log(value);
             this.stockQuery = value;
+        })
+    };
+
+    @action loadStockAmount = (value: number) => {
+        runInAction(() => {
+            this.stockAmount = value;
         })
     }
 
