@@ -26,7 +26,7 @@ const Stocks = {
     getStockHistory: (value: string): Promise<IStockHistory[]> => requests.get(`/stock/history/${value}`),
     getStocksByUser: (): Promise<IStock[]> => requests.get(`/stock/user/stocks`),
     buyStocks: (symbol: string, body: {}) => requests.post(`/stock/buy/${symbol}`, body),
-    sellStocks: (symbol: string, amount: number) => requests.post(`/stock/sell/${symbol}`, amount)
+    sellStocks: (symbol: string, body: {}) => requests.post(`/stock/sell/${symbol}`, body)
 };
 
 const Transactions = {

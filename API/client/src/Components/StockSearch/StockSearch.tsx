@@ -1,14 +1,16 @@
 import React, {useContext, useEffect} from 'react';
-import { Button, Modal, Header, Input} from "semantic-ui-react";
+import { Button, Modal, Header, Input, Form} from "semantic-ui-react";
 import {Chart} from "react-google-charts";
 import {observer} from "mobx-react-lite";
+import {Form as FinalForm, Field} from 'react-final-form';
 
 import style from '../Components.module.css';
 import RootStoreContext from "../../Stores/rootStore";
+import {IStockQuery} from "../../Models/stockQuery";
 
 const StockSearch: React.FC = () => {
     const rootStore = useContext(RootStoreContext);
-    const {stockQueryHistory, stockQuery, loadingHistory, closeQuery, loadStockAmount} = rootStore.stockStore;
+    const {stockQueryHistory, stockQuery, loadingHistory, closeQuery, loadStockAmount, sellStocks, stockTransaction} = rootStore.stockStore;
 
     const graphDataHist = [[{type: 'date', label: 'Day'}, '$USD']];
 
@@ -52,9 +54,9 @@ const StockSearch: React.FC = () => {
                         {displayGraph}
                         <label className={style.stockLabel}>Number of Stock</label>
                         <div className={style.stockBtns}>
-                            <Input onChange={handleChange} className={style.stockModalInput} placeholder='Number of Stock' />
+                            <Input onChange={handleChange} name="amount" className={style.stockModalInput} placeholder='Number of Stock' />
                             <Button className={style.btnGreenStockModal}>Buy</Button>
-                            <Button className={style.btnRedStockModal}>Sell</Button>
+                            <Button onClick={() => sellStocks(stockTransaction)} className={style.btnRedStockModal}>Sell</Button>
                         </div>
                     </div>
                 </Modal.Content>

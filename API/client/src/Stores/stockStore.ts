@@ -3,6 +3,7 @@ import {IStock} from "../Models/stockModel";
 import {RootStore} from "./rootStore";
 import agent from "../API/agent";
 import {IStockHistory} from "../Models/stockHistory";
+import {IStockQuery} from "../Models/stockQuery";
 
 export default class StockStore {
     rootStore: RootStore;
@@ -12,8 +13,7 @@ export default class StockStore {
     }
 
     @observable stocks: IStock[] = [];
-    @observable stockAmount: number = 0;
-    @observable stockSearchSymbol: string = '';
+    @observable stockTransaction: IStockQuery = {amount: 0, symbol: ''};
     @observable stockQuery: string = '';
     @observable stockQueryHistory: IStockHistory[] = [];
     @observable loadingHistory = true;
@@ -68,8 +68,9 @@ export default class StockStore {
 
     @action loadStockAmount = (value: number) => {
         runInAction(() => {
-            this.stockAmount = value;
-        })
+            this.stockTransaction.amount = value;
+            this.stockTransaction.symbol = this.stockQuery;
+        });
     };
 
     @action closeQuery = () => {
@@ -80,8 +81,10 @@ export default class StockStore {
         );
     };
 
-    @action sellStocks = async () => {
-        await agent.Stocks.sellStocks(this.stockSearchSymbol, this.stockAmount)
+    @action sellStocks = async (values: IStockQuery) => {
+        console.log(this.stockQuery);
+        console.log(values);
+        await agent.Stocks.sellStocks(this.stockQuery, values)
             .then(() => console.log("Stock Sale Was Successful"))
             .catch(error => {console.log(error)})
     }
