@@ -2,12 +2,10 @@ import React, {useContext, useEffect} from 'react';
 import { Button, Modal, Header, Input, Form} from "semantic-ui-react";
 import {Chart} from "react-google-charts";
 import {observer} from "mobx-react-lite";
-import {Form as FinalForm, Field} from 'react-final-form';
+import { Redirect } from 'react-router-dom';
 
 import style from '../Components.module.css';
 import RootStoreContext from "../../Stores/rootStore";
-import {IStockQuery} from "../../Models/stockQuery";
-import { Redirect } from 'react-router-dom';
 
 const StockSearch: React.FC = () => {
     const rootStore = useContext(RootStoreContext);
@@ -18,6 +16,7 @@ const StockSearch: React.FC = () => {
         closeQuery,
         loadStockAmount,
         sellStocks,
+        buyStocks,
         stockTransaction,
         transactionMade} = rootStore.stockStore;
 
@@ -67,7 +66,7 @@ const StockSearch: React.FC = () => {
                         <label className={style.stockLabel}>Number of Stock</label>
                         <div className={style.stockBtns}>
                             <Input onChange={handleChange} name="amount" className={style.stockModalInput} placeholder='Number of Stock' />
-                            <Button className={style.btnGreenStockModal}>Buy</Button>
+                            <Button onClick={() => buyStocks(stockTransaction)} className={style.btnGreenStockModal}>Buy</Button>
                             <Button onClick={() => sellStocks(stockTransaction)} className={style.btnRedStockModal}>Sell</Button>
                         </div>
                     </div>

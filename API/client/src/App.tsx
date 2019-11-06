@@ -21,7 +21,7 @@ const App: React.FC = () => {
               <div className="App">
                   <Switch>
                       <Route exact path="/" component={Home}/>
-                      <Route onLoad={resetTransaction()} exact path="/dashboard" component={Dashboard} />
+                      <Route exact path="/dashboard" component={Dashboard} />
                       <Route exact path="/portfolio" component={Portfolio} />
                       <Route exact path="/wallet" component={Wallet} />
                   </Switch>

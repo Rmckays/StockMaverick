@@ -11,7 +11,7 @@ import {combineValidators, isRequired} from 'revalidate';
 const validate = combineValidators({
     email: isRequired('email'),
     password: isRequired('password')
-})
+});
 
 const Login: React.FC = () => {
     const rootStore = useContext(RootStoreContext);

@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useContext} from 'react';
 
 import style from './Containers.module.css';
 import { Grid } from "semantic-ui-react";
+import RootStoreContext from "../Stores/rootStore";
 
 interface IProps {
     GraphCard: React.FC | null,

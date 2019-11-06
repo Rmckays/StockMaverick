@@ -12,6 +12,7 @@ interface IProps {
 const Navigation: React.FC<IProps> = () => {
         const rootStore = useContext(RootStoreContext);
         const {logout, isLoggedIn, user} = rootStore.userStore;
+        const {resetTransaction} = rootStore.stockStore;
 
         return (
             <Menu vertical className={style.navigation}>
@@ -22,7 +23,7 @@ const Navigation: React.FC<IProps> = () => {
                     </Fragment>
                 ): null}
                 <Menu.Item as={NavLink} exact to='/dashboard'> Dashboard </Menu.Item>
-                <Menu.Item as={NavLink} exact to='/portfolio'> Portfolio </Menu.Item>
+                <Menu.Item as={NavLink} onClick={resetTransaction} exact to='/portfolio'> Portfolio </Menu.Item>
                 <Menu.Item as={NavLink} exact to='/wallet'> Wallet </Menu.Item>
                 <Menu.Item as={NavLink} exact to='/profile'> Profile </Menu.Item>
                 <Menu.Item as={NavLink} exact to='/about'> About </Menu.Item>
