@@ -4,6 +4,7 @@ export interface IStockTransaction {
     companyName: string;
     transactionDate: Date;
     purchasePrice: number;
+    sellPrice: number;
     type: string;
     transactionPrice: number;
     yearHigh: number;

@@ -25,6 +25,7 @@ export default class TransactionStore {
                         companyName: transanction.companyName,
                         transactionDate: transanction.transactionDate,
                         purchasePrice: transanction.purchasePrice,
+                        sellPrice: transanction.sellPrice,
                         transactionPrice: transanction.transactionPrice,
                         yearHigh: transanction.yearHigh,
                         transactionAmount: transanction.transactionAmount

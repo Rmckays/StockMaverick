@@ -13,6 +13,8 @@ const TransactionCard: React.FC = () => {
 
         const date = new Date(stockTransaction.transactionDate);
 
+        const price = (stockTransaction.type !== "Sale")? stockTransaction.purchasePrice : stockTransaction.sellPrice;
+
         return (
             <Table.Row>
                 <Table.Cell>{date.toDateString()}</Table.Cell>
@@ -20,7 +22,7 @@ const TransactionCard: React.FC = () => {
                 <Table.Cell>{stockTransaction.symbol}</Table.Cell>
                 <Table.Cell>{stockTransaction.companyName}</Table.Cell>
                 <Table.Cell>{stockTransaction.transactionPrice.toFixed(2)}</Table.Cell>
-                <Table.Cell>{stockTransaction.purchasePrice}</Table.Cell>
+                <Table.Cell>{price.toFixed(2)}</Table.Cell>
                 <Table.Cell>{stockTransaction.transactionAmount}</Table.Cell>
             </Table.Row>
         )
