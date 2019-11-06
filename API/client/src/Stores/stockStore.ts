@@ -4,6 +4,7 @@ import {RootStore} from "./rootStore";
 import agent from "../API/agent";
 import {IStockHistory} from "../Models/stockHistory";
 import {IStockQuery} from "../Models/stockQuery";
+import {history} from "../index";
 
 export default class StockStore {
     rootStore: RootStore;
@@ -17,6 +18,7 @@ export default class StockStore {
     @observable stockQuery: string = '';
     @observable stockQueryHistory: IStockHistory[] = [];
     @observable loadingHistory = true;
+    @observable transactionMade = false;
 
     @action loadStocks = () => {
         agent.Stocks.getStocksByUser()
@@ -85,7 +87,19 @@ export default class StockStore {
         console.log(this.stockQuery);
         console.log(values);
         await agent.Stocks.sellStocks(this.stockQuery, values)
-            .then(() => console.log("Stock Sale Was Successful"))
-            .catch(error => {console.log(error)})
+            .then(() => {
+                console.log("Stock Sale Was Successful");
+                runInAction(() => {
+                    this.transactionMade = true;
+                });
+            })
+            .catch(error => {console.log(error)});
+
+    }
+
+    @action resetTransaction = () => {
+        runInAction(() => {
+            this.transactionMade = false;
+        })
     }
 }

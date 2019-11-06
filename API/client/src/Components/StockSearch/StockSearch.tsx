@@ -7,10 +7,19 @@ import {Form as FinalForm, Field} from 'react-final-form';
 import style from '../Components.module.css';
 import RootStoreContext from "../../Stores/rootStore";
 import {IStockQuery} from "../../Models/stockQuery";
+import { Redirect } from 'react-router-dom';
 
 const StockSearch: React.FC = () => {
     const rootStore = useContext(RootStoreContext);
-    const {stockQueryHistory, stockQuery, loadingHistory, closeQuery, loadStockAmount, sellStocks, stockTransaction} = rootStore.stockStore;
+    const {
+        stockQueryHistory,
+        stockQuery,
+        loadingHistory,
+        closeQuery,
+        loadStockAmount,
+        sellStocks,
+        stockTransaction,
+        transactionMade} = rootStore.stockStore;
 
     const graphDataHist = [[{type: 'date', label: 'Day'}, '$USD']];
 
@@ -35,6 +44,8 @@ const StockSearch: React.FC = () => {
         loadStockAmount(value);
     };
 
+    const handleTransaction = (transactionMade)? <Redirect to='/dashboard' /> : null;
+
     useEffect(() => {
         stockQueryHistory.forEach(stock => {
             const dateFormat = stock.date.split("-");
@@ -50,6 +61,7 @@ const StockSearch: React.FC = () => {
             <div className={style.container}>
                 <Header className={style.headerText} icon='dollar sign' content={`Price of ${stockQuery} in last 30 days`} />
                 <Modal.Content className={style.form}>
+                    {handleTransaction}
                     <div className={style.form}>
                         {displayGraph}
                         <label className={style.stockLabel}>Number of Stock</label>

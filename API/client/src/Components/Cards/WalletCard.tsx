@@ -17,7 +17,7 @@ const WalletCard: React.FC = () => {
             <Table.Row>
                 <Table.Cell>{date.toDateString()}</Table.Cell>
                 <Table.Cell>{walletTransaction.type}</Table.Cell>
-                <Table.Cell>{walletTransaction.amount}</Table.Cell>
+                <Table.Cell>{walletTransaction.amount.toFixed(2)}</Table.Cell>
             </Table.Row>
         )
     });
