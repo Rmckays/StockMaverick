@@ -12,12 +12,11 @@ using Persistence;
 
 namespace Application.User
 {
-    public class AddCash
+    public class WithdrawCash
     {
         public class Command : IRequest
         {
             public float Amount { get; set; }
-
         }
         
         public class CommandValidator : AbstractValidator<Command>
@@ -55,13 +54,13 @@ namespace Application.User
                 var walletTransaction = new WalletTransaction
                 {
                     Id = new Guid(),
-                    Type = "Deposit",
+                    Type = "Withdrawal",
                     TransactionDate = DateTime.Now,
-                    Amount = request.Amount,
+                    Amount = -request.Amount,
                     AppUser = user
                 };
 
-                user.CashAmount = user.CashAmount + request.Amount;
+                user.CashAmount = user.CashAmount - request.Amount;
 
                 _context.WalletTransactions.Add(walletTransaction);
                     
@@ -69,7 +68,7 @@ namespace Application.User
 
                 if (success) return Unit.Value;
                 
-                throw new Exception("Problem Adding Funds");
+                throw new Exception("Problem Withdrawing Funds");
             }
         }
     }

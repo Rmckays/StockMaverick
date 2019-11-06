@@ -110,7 +110,7 @@ export default class StockStore {
                 });
             })
             .catch(error =>  console.log(error));
-    }
+    };
 
     @action resetTransaction = () => {
         runInAction(() => {

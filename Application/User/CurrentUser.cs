@@ -33,6 +33,7 @@ namespace Application.User
                 {
                     DisplayName = user.DisplayName,
                     Username = user.UserName,
+                    CashAmount = user.CashAmount,
                     Token = _jwtGenerator.CreateToken(user),
                     Image = null
                 };

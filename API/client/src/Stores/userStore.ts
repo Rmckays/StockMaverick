@@ -13,7 +13,7 @@ export default class UserStore {
 
     @observable user: IUser | null = null;
     @observable token: string | null = null;
-    @observable cash: string | null = null;
+    @observable cash: {amount: number} | null = null;
 
     @computed get isLoggedIn() {return !! this.user}
 
@@ -36,12 +36,8 @@ export default class UserStore {
             const user = await agent.User.register(values);
             runInAction(() => {
                 this.user = user;
-                console.log(user);
                 this.setToken(user.token);
             });
-
-            // history.push(`/dashboard`);
-            // history.go(0);
         }
         catch(error){
             console.log(error);
@@ -53,16 +49,30 @@ export default class UserStore {
         this.token = token;
     };
 
-    @action setCash = () => {
-
+    @action getCurrentUser = async () => {
+        if(this.user){
+            const user = await agent.User.current();
+            runInAction(() => {
+                this.user = user;
+                this.setToken(user.token);
+            })
+        }
     };
 
-    @action deposit = () => {
-
+    @action setCashAmount = async (value: number) => {
+        runInAction(() => {
+            this.cash = {amount: value}
+        });
     };
 
-    @action withdraw = () => {
+    @action deposit = async () => {
+        await agent.Funds.addCash(this.cash!);
+        await this.getCurrentUser();
+    };
 
+    @action withdraw = async () => {
+        await agent.Funds.withdrawCash(this.cash!);
+        await this.getCurrentUser();
     };
 
     @action logout = () => {

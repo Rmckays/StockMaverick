@@ -32,7 +32,12 @@ const Stocks = {
 const Transactions = {
     getStockTransactions: (): Promise<IStockTransaction[]> => requests.get('/transactions/stocks'),
     getWalletTransactions: (): Promise<IWalletTransaction[]> => requests.get('/transactions/wallet')
-}
+};
+
+const Funds = {
+    addCash: (body: {}) => requests.post('/user/funds/add', body),
+    withdrawCash: (body: {}) => requests.post('/user/funds/withdraw', body)
+};
 
 const User = {
     current: (): Promise<IUser> => requests.get('/user'),
@@ -43,5 +48,6 @@ const User = {
 export default {
     Stocks,
     User,
-    Transactions
+    Transactions,
+    Funds
 };

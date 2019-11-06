@@ -35,5 +35,11 @@ namespace API.Controllers
         {
             return await Mediator.Send(command);
         }
+
+        [HttpPost("funds/withdraw")]
+        public async Task<ActionResult<Unit>> WithdrawFunds(WithdrawCash.Command command)
+        {
+            return await Mediator.Send(command);
+        }
     }
 }
