@@ -12,6 +12,7 @@ const BalanceCard = () => {
     const cash = (user) ? user.cashAmount.toFixed(2) : '0';
 
     const handleCashChange = (event: any) => {
+        console.log(event);
         const amount = event.target.value;
         setCashAmount(amount);
     };

@@ -49,7 +49,7 @@ namespace Application.Stock
                     .Where(s => s.Symbol == request.Symbol).Where(u => u.AppUser == user)
                     .SingleOrDefaultAsync();
 
-                var client = new RestClient("https://sandbox.iexapis.com/stable/stock/{symbol}");
+                var client = new RestClient("https://cloud.iexapis.com/stable/stock/{symbol}");
                 var restRequest = new RestRequest("/quote/latestprice", Method.GET);
                 restRequest.AddParameter("symbol", request.Symbol, ParameterType.UrlSegment);
                 restRequest.AddHeader("Content-Type", "application/json");
@@ -59,7 +59,9 @@ namespace Application.Stock
 
                 dynamic api = JObject.Parse(restResponse.Content);
 
-                var transactionPrice = (float) api.latestPrice * request.Amount ;
+                var transactionPrice = (float) api.latestPrice * request.Amount;
+
+                var unitPrice = (float) api.latestPrice;
 
                 Console.WriteLine(transactionPrice);
 
@@ -67,7 +69,7 @@ namespace Application.Stock
                 {
                     var stock = new PortfolioStock
                     {
-                        PurchaseDate = request.PurchaseDate,
+                        PurchaseDate = DateTime.Now,
                         Amount = request.Amount,
                         Symbol = api.symbol,
                         CompanyName = api.companyName,
@@ -85,7 +87,7 @@ namespace Application.Stock
                 else
                 {
                     portfolioStock.Amount += request.Amount;
-                    portfolioStock.PurchaseDate = request.PurchaseDate;
+                    portfolioStock.PurchaseDate = DateTime.Now;
                     portfolioStock.PurchasePrice = (transactionPrice + (float) portfolioStock.Price) /
                                                    portfolioStock.Amount;
                     portfolioStock.Price += transactionPrice;
@@ -95,7 +97,7 @@ namespace Application.Stock
 
                 var transaction = new Transaction
                 {
-                    TransactionDate = request.PurchaseDate,
+                    TransactionDate = DateTime.Now,
                     TransactionAmount = request.Amount,
                     PurchasePrice = api.latestPrice,
                     AppUser = user,
@@ -106,7 +108,7 @@ namespace Application.Stock
                     CompanyName = api.companyName
                 };
                 
-                var cost = transactionPrice * request.Amount;
+                var cost = (float) api.latestPrice * request.Amount;
                 
                 var walletTransaction = new WalletTransaction
                 {

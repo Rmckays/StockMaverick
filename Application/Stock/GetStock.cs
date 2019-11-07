@@ -24,7 +24,7 @@ namespace Application.Stock
                 
                 var apiKey = Environment.GetEnvironmentVariable("API_KEY");
                 
-                var client = new RestClient("https://sandbox.iexapis.com/stable/stock/{symbol}");
+                var client = new RestClient("https://cloud.iexapis.com/stable/stock/{symbol}");
                 var restRequest = new RestRequest("/quote/latestprice", Method.GET);
                 restRequest.AddParameter("symbol", request.Symbol, ParameterType.UrlSegment);
                 restRequest.AddHeader("Content-Type", "application/json");

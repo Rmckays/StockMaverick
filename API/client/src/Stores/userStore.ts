@@ -68,6 +68,7 @@ export default class UserStore {
     @action deposit = async () => {
         await agent.Funds.addCash(this.cash!);
         await this.getCurrentUser();
+        await this.rootStore.transactionStore.loadWalletTransactions()
     };
 
     @action withdraw = async () => {
