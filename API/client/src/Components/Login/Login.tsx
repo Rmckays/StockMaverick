@@ -35,7 +35,7 @@ const Login: React.FC = () => {
                                     <label className={style.textWhite}>Password</label>
                                     <Field name="password" placeholder='Password' type="password" component='input'/>
                                 </Form.Field>
-                                {submitError && !dirtySinceLastSubmit && <Label color='red' basic content={submitError.statusText} />}
+                                {submitError && !dirtySinceLastSubmit && <Label color='red' basic content="Wrong Password or Username"/>}
                                 <Button disabled={invalid && !dirtySinceLastSubmit || pristine} className={style.btnRed} type='submit'>Login</Button>
                             </Form>
                         )}

@@ -9,6 +9,7 @@ import Portfolio from "./Containers/Pages/Portfolio";
 import Wallet from "./Containers/Pages/Wallet";
 import {observer} from "mobx-react-lite";
 import RootStoreContext from './Stores/rootStore'
+import About from "./Containers/Pages/About";
 
 
 const App: React.FC = () => {
@@ -24,6 +25,7 @@ const App: React.FC = () => {
                       <Route exact path="/dashboard" component={Dashboard} />
                       <Route exact path="/portfolio" component={Portfolio} />
                       <Route exact path="/wallet" component={Wallet} />
+                      <Route exact path="/about" component={About} />
                   </Switch>
               </div>
           </BrowserRouter>
