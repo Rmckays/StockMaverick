@@ -55,8 +55,8 @@ const StockSearch: React.FC<IProps> = ({queryDisabled}) => {
     const handleChange = (event: any) => {
         console.log(event.target.value);
         const value = event.target.value;
-        handleQuery(value);
         loadStockAmount(value);
+        handleQuery(value);
     };
 
     const handleTransaction = (transactionMade)? <Redirect to='/dashboard' /> : null;
