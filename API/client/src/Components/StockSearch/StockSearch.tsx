@@ -1,5 +1,5 @@
-import React, {useContext, useEffect} from 'react';
-import { Button, Modal, Header, Input, Form} from "semantic-ui-react";
+import React, {useContext, useEffect, useState} from 'react';
+import { Button, Modal, Header, Input} from "semantic-ui-react";
 import {Chart} from "react-google-charts";
 import {observer} from "mobx-react-lite";
 import { Redirect } from 'react-router-dom';
@@ -7,7 +7,11 @@ import { Redirect } from 'react-router-dom';
 import style from '../Components.module.css';
 import RootStoreContext from "../../Stores/rootStore";
 
-const StockSearch: React.FC = () => {
+interface IProps {
+    queryDisabled: boolean
+}
+
+const StockSearch: React.FC<IProps> = ({queryDisabled}) => {
     const rootStore = useContext(RootStoreContext);
     const {
         stockQueryHistory,
@@ -19,6 +23,16 @@ const StockSearch: React.FC = () => {
         buyStocks,
         stockTransaction,
         transactionMade} = rootStore.stockStore;
+
+    const [invalid, setValid] = useState(true);
+
+    const handleQuery = (value: string) => {
+        if(parseInt(value) > 0){
+            setValid(false);
+        } else {
+            setValid(true);
+        }
+    };
 
     const graphDataHist = [[{type: 'date', label: 'Day'}, '$USD']];
 
@@ -39,11 +53,16 @@ const StockSearch: React.FC = () => {
     />);
 
     const handleChange = (event: any) => {
+        console.log(event.target.value);
         const value = event.target.value;
+        handleQuery(value);
         loadStockAmount(value);
     };
 
     const handleTransaction = (transactionMade)? <Redirect to='/dashboard' /> : null;
+
+    const validInput = (!invalid) ? <Input onChange={handleChange} name="amount" className={style.stockModalInput} placeholder='Number of Stock' /> :
+        <Input onChange={handleChange} name="amount" className={style.invalidStockModalInput} placeholder='Number of Stock' /> ;
 
     useEffect(() => {
         stockQueryHistory.forEach(stock => {
@@ -54,9 +73,8 @@ const StockSearch: React.FC = () => {
         console.log("stock search:", graphDataHist);
     }, [rootStore.stockStore.stockQueryHistory, graphDataHist]);
 
-
     return (
-        <Modal onClose={closeQuery} className={style.containerStock} trigger={<Button className={style.btnRedModalSearch} type="submit">Search Stocks</Button>} basic size='mini'>
+        <Modal onClose={closeQuery} className={style.containerStock} trigger={<Button disabled={queryDisabled} className={style.btnRedModalSearch} type="submit">Search Stocks</Button>} basic size='mini'>
             <div className={style.container}>
                 <Header className={style.headerText} icon='dollar sign' content={`Price of ${stockQuery} in last 30 days`} />
                 <Modal.Content className={style.form}>
@@ -65,9 +83,9 @@ const StockSearch: React.FC = () => {
                         {displayGraph}
                         <label className={style.stockLabel}>Number of Stock</label>
                         <div className={style.stockBtns}>
-                            <Input onChange={handleChange} name="amount" className={style.stockModalInput} placeholder='Number of Stock' />
-                            <Button onClick={() => buyStocks(stockTransaction)} className={style.btnGreenStockModal}>Buy</Button>
-                            <Button onClick={() => sellStocks(stockTransaction)} className={style.btnRedStockModal}>Sell</Button>
+                            {validInput}
+                            <Button disabled={invalid} onClick={() => buyStocks(stockTransaction)} className={style.btnGreenStockModal}>Buy</Button>
+                            <Button disabled={invalid} onClick={() => sellStocks(stockTransaction)} className={style.btnRedStockModal}>Sell</Button>
                         </div>
                     </div>
                 </Modal.Content>

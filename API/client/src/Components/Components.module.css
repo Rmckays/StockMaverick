@@ -112,6 +112,13 @@ i:not(.headerText){
     height: 100%;
 }
 
+.invalidStockModalInput {
+    width: 30%;
+    height: 100%;
+    border-radius: 0.25rem;
+    border: 2px solid #CA3939 !important;
+}
+
 .footer {
      display: flex;
      justify-content: center;

@@ -1,5 +1,4 @@
-import React, {useContext, useEffect} from "react";
-import {Form as FinalForm, Field} from "react-final-form";
+import React, {useContext, useState} from "react";
 import {Form} from "semantic-ui-react";
 import {observer} from "mobx-react-lite";
 
@@ -10,20 +9,34 @@ import RootStoreContext from "../../Stores/rootStore";
 const StockCard: React.FC = () => {
   const rootStore = useContext(RootStoreContext);
   const {loadStockHistory, loadQuerySymbol} = rootStore.stockStore;
+  const [invalid, setValid] = useState(true);
+
 
   const handleChange = (event: any) => {
       const value = event.target.value;
+      handleQuery(value);
       loadQuerySymbol(value);
   };
+
+  const handleQuery = (value: string) => {
+      if(value.length > 2){
+          setValid(false);
+      } else {
+          setValid(true);
+      }
+  };
+
+  const validInput = (!invalid) ? <input onChange={handleChange} name="symbol" placeholder='Stock Symbol' /> :
+      <input className={style.invalidInput} onChange={handleChange} name="symbol" placeholder='Stock Symbol' /> ;
 
   return (
       <div className={style.stockCard}>
           <Form onSubmit={loadStockHistory} className={style.form}>
               <Form.Field>
                   <label >Stock Symbol</label>
-                  <input onChange={handleChange} name="symbol" placeholder='Stock Symbol' />
+                  {validInput}
               </Form.Field>
-              <StockSearch />
+              <StockSearch queryDisabled={invalid} />
           </Form>
       </div>
   );
