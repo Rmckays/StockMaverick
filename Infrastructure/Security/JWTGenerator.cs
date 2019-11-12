@@ -15,7 +15,7 @@ namespace Infrastructure.Security
         private readonly SymmetricSecurityKey _key;
         public JWTGenerator(IConfiguration config)
         {
-            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("TOKEN_KEY"));
+            _key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TOKEN_KEY"]));
         }
         public string CreateToken(AppUser user)
         {

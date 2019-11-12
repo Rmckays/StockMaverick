@@ -25,7 +25,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
         "API_KEY": "Your API Key Here",
-        "TOKEN_KEY": "Your Super Secret Key Here"
+        "TOKEN_KEY": "Your Secret Key Here"
       }
     }
   }
