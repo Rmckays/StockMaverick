@@ -18,6 +18,7 @@ const About = () => {
 
     const {user} = rootStore.userStore;
     const isLoggedOn = (user) ? "Dashboard" : "Homepage";
+    const noRegister = (!user) ? <Register /> : null;
     const dashRedirect = (userRedirect) ? <Redirect to="/dashboard" /> : null;
 
 
@@ -44,7 +45,7 @@ const About = () => {
                 no real money or stocks are traded, all the data is real and is provided through the IEX Web API.</h2>
                 <div className={style.centerBtns}>
                     <Button onClick={handleClick} className={style.btnRed}><NavLink exact to="/"/>{isLoggedOn}</Button>
-                    <Register />
+                    {noRegister}
                 </div>
             </Container>
             <Footer/>

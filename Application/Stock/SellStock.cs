@@ -17,13 +17,10 @@ namespace Application.Stock
     {
         public class Command : IRequest
         {
-//            public Guid Id { get; set; }
-            
             public int Amount { get; set; }
             
             public string Symbol { get; set; }
-            
-//            public DateTime PurchaseDate { get; set; }
+
         }
 
         public class Handler : IRequestHandler<Command>

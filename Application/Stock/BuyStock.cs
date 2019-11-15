@@ -19,12 +19,8 @@ namespace Application.Stock
         { 
             public string Symbol {get; set;}
 
-            public Guid Id { get; set; }
-            
             public int Amount { get; set; }
-            
-            public DateTime PurchaseDate { get; set; }
-            
+
         }
 
         public class Handler : IRequestHandler<Command>
@@ -61,8 +57,6 @@ namespace Application.Stock
 
                 var transactionPrice = (float) api.latestPrice * request.Amount;
 
-                var unitPrice = (float) api.latestPrice;
-
                 Console.WriteLine(transactionPrice);
 
                 if (portfolioStock == null)
@@ -77,7 +71,7 @@ namespace Application.Stock
                         PurchasePrice = api.latestPrice,
                         Price = transactionPrice,
                         YearHigh = api.week52High,
-                        Id = request.Id,
+                        Id = new Guid(),
                         AppUser = user
                     };
 
@@ -114,7 +108,7 @@ namespace Application.Stock
                 {
                     Id = new Guid(),
                     Type = "Stock Purchase",
-                    TransactionDate = request.PurchaseDate,
+                    TransactionDate = DateTime.Now,
                     Amount = -cost,
                     AppUser = user
                 };
