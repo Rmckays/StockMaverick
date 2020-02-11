@@ -8,7 +8,7 @@ The front-end was built using Typescript, React, and MobX and includes full JWT 
 
 Stock Maverick was created using the IEX API for real time stock prices. Find more out at: [IEX API](https://iexcloud.io/docs/api/)
 
-![ScoreReceiver Screenshot](https://github.com/Rmckays/StockMaverick/blob/master/Images/StockmavHome.JPG)
+![StockMaverick Screenshot](https://github.com/Rmckays/StockMaverick/blob/master/Images/StockMavHome.JPG)
 
 #### [Try it here!](https://stockmaverick.azurewebsites.net/)
 
