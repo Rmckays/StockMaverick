@@ -24,8 +24,8 @@
       "applicationUrl": "https://localhost:5001;http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "API_KEY": "Your API Key Here",
-        "TOKEN_KEY": "Your Secret Key Here"
+        "API_KEY": "pk_04ed137e3f134c6ebcc3ce81c314b60d",
+        "TOKEN_KEY": "super secret key"
       }
     }
   }

@@ -5,7 +5,7 @@ import {IStockTransaction} from "../Models/stockTransactionModel";
 import {IWalletTransaction} from "../Models/walletTransactionModel";
 import {IStockHistory} from "../Models/stockHistory";
 
-axios.defaults.baseURL = 'http://localhost:5000/api';
+axios.defaults.baseURL = 'https://stockmaverick.azurewebsites.net/api';
 
 axios.interceptors.request.use((config) => {
     const token = window.localStorage.getItem('jwt');

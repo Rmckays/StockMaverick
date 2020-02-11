@@ -32,7 +32,7 @@
 }
 
 #logo {
-    background: url("../Img/StockMaverickLogo.png") center center/cover;
+    background: url("../Img/StockMaverickLogo.png") no-repeat center center/contain;
     width: 150px;
     height: 75px;
     margin-right: 0.75rem;
